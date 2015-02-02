@@ -3,17 +3,21 @@ permalink:        pretty
 relative_permalinks: true
 
 # Setup
-title:            Poole
-tagline:          The Jekyll Butler
-url:              http://getpoole.com
+title:            'Dangerous Data'
+tagline:          'The Blog of Rob Danger Winters'
+url:              http://wintersrd.github.io
 paginate:         1
 baseurl:          /
 author:
-  name:           Mark Otto
-  url:            https://twitter.com/mdo
-  email:          markdotto@gmail.com
+  name:           Rob Winters
+  url:            https://nl.linkedin.com/wintersrd/en
+  email:          wintersrd@gmail.com
 
 # Custom vars
 version:          1.0.0
 github:
-  repo:           https://github.com/poole/poole
+  repo:           https://github.com/wintersrd/wintersrd.github.io
+pages_list:       
+  About: '/about'
+  Archive: '/archive'
+  Feed: '/atom.xml'
