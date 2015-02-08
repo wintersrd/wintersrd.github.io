@@ -12,6 +12,7 @@ I have been working in the BI space for almost ten years and leading teams for m
 In my free time I enjoy brewing, cycling, playing board games, and spending time with my wife and our two dogs.
 
 If you'd like to know more, I would invite you to:
+
 * [View my Linkedin](http://nl.linkedin.com/in/wintersrd)
 
 * [Check out conference presentations I've given on BI/Analytics](http://www.slideshare.net/RobWinters1)
