@@ -13,5 +13,7 @@ In my free time I enjoy brewing, cycling, playing board games, and spending time
 
 If you'd like to know more, I would invite you to:
 * [View my Linkedin](http://nl.linkedin.com/in/wintersrd)
+
 * [Check out conference presentations I've given on BI/Analytics](http://www.slideshare.net/RobWinters1)
+
 * [Fork one of my repositories](https://github.com/wintersrd)
