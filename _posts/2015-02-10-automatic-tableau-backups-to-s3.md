@@ -28,6 +28,7 @@ There are several critical functions to generating and rotating the backups effe
 
 ### Options Management
 Options were handled using the argparse and option parser libraries to store configuration details on our Tableau server; our configuration options were:
+
 ```
 [aws]
 key: 
@@ -42,11 +43,13 @@ tempdir: C:/BACKUPS/
 tabadmin_path: C:/Program Files/Tableau/Tableau Server/8.3/bin/tabadmin.exe
 filename_base: TABLEAU_BACKUP
 ```
+
 This affords the flexibility to easily change rotation schedule in the future.
 
 
 ### Backup Extraction
 Handled using a simple system call to the tabadmin command based on the parameters set in the config file:
+
 ```python
 def generate_extract(configs):
 	call(configs.get('Tableau','tabadmin_path') + " backup -d " + configs.get('Tableau','tempdir') + configs.get('Tableau','filename_base'))
@@ -69,7 +72,7 @@ Since we are backing up daily but have a tiered backup strategy, the most trivia
 
 3. All file names which have "01" as the date, regardless of year/month 
 
-As a day can fit 0-3 of these conditions, the easiest solution was to generate three distinct lists, merge them, and deduplicate them using the set function. We can then pull a list of all keys from S3 for our Tableau backups, filtering them, and then deleting the undesired files. To do so, the function below is used:
+As a day can fit 0-3 of these conditions, the easiest solution was to generate three distinct lists, merge them, and deduplicate them using the set function. We can then pull a list of all keys from S3 for our Tableau backups, filtering them, and then deleting the undesired files. One caveat associated with S3 keys from boto: the file name is treated is the entire path after the bucket, so it is necessary to parse out the relevant information for finding the correct file. To do so, the function below is used:
 
 ```python
 def remove_old(connection, configs):
