@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Real-time recommenders, part two: Event tracking (front end, collector, and bus)
+title: Real-time recommenders, part two -  Event tracking (front end, collector, and bus)
 tags:
 - Recommenders
 - Event Tracking
