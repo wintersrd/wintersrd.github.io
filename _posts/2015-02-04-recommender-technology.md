@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Real-time recommenders, part one: Overview of Technology
+tags:
+- Recommender
 ---
 ### Introduction
 This is the first in a series of posts on how to implement near-real-time tracking and personalization for your users based on off the shelf and open source technologies. While many organizations perceive "real time" as challenging, the solution outlined here has been tested to scale easily to ten million pageviews per day; significantly higher volumes than most organizations encounter.

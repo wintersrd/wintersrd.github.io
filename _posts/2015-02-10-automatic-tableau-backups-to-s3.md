@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Automating Tableau Backups via AWS
+tags:
+- Tableau
+- AWS
 ---
 ### Introduction
 Tableau is far and away my favorite Business Intelligence tool for its ease of development and performance on small (<20M row) extracts, but I have always found the backup approach disappointing. Each backup can account for a substantial amount of disk space, there is no default backup rotation, and Windows offers insufficient tooling to effectively handle these tasks. Enter [boto](https://boto.readthedocs.org/en/latest/), the Python library for AWS. Using boto plus S3 and tabadmin, we were able to build a backup solution for Tableau which is:
