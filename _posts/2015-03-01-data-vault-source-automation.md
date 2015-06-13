@@ -19,3 +19,5 @@ When we began our vault rollout, one of the initial challenges we faced was the 
 
 
 ### Engine workflow
+
+![High level data vault workflow model]({{site.url}}/assets/DV_Automation.png)
