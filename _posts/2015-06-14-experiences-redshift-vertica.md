@@ -17,14 +17,14 @@ When it comes to conducting analysis on very large structured data sets, there a
 
 ###Time and Time Series
 
-* **Redshift**: Time series analysis is where Redshift falls flat; the database is lacking certain basic functions like TO_TIMESTAMP... god help you if you need to work with Unix epochs. Most basic date functions are represented (ex. DATEDIFF, DATETRUNC) but there are very few analytical or window functions available.
+* **Redshift**: Time series analysis is where Redshift falls flat; the database is lacking certain basic functions like _TO\_TIMESTAMP_... god help you if you need to work with Unix epochs. Most basic date functions are represented (ex. _DATEDIFF_, _DATETRUNC_) but there are very few analytical or window functions available.
 
-* **Vertica**: In contrast, Vertica has an enormous number of date functions available to assist in analysis of event stream data (although not all functions are implemented in ISO/ANSI standards). Additionally, it's possible to do advanced time analytics in raw SQL. For example, sessionization of an event stream can be done using CONDITIONAL_TRUE_EVENT.
+* **Vertica**: In contrast, Vertica has an enormous number of date functions available to assist in analysis of event stream data (although not all functions are implemented in ISO/ANSI standards). Additionally, it's possible to do advanced time analytics in raw SQL. For example, sessionization of an event stream can be done using _CONDITIONAL\_TRUE\_EVENT_.
 
 
 ###JSON Handling
 
-* **Redshift**: Redshift allows direct loading of JSON objects to tables and will map each key to the appropriate column during loading. This solution works well when the arrays are consistently defined as it will offer high performance on read but is a liability if new keys are constantly being added to your arrays - those new records will be ignored until the column is added to the table. Redshift also has excellent support for querying JSON objects stored in strings (ex. select json_extract_array_element_text('[111,112,113]', 2);)
+* **Redshift**: Redshift allows direct loading of JSON objects to tables and will map each key to the appropriate column during loading. This solution works well when the arrays are consistently defined as it will offer high performance on read but is a liability if new keys are constantly being added to your arrays - those new records will be ignored until the column is added to the table. Redshift also has excellent support for querying JSON objects stored in strings (ex. _select json\_extract\_array\_element\_text('[111,112,113]', 2);_)
 
 * **Vertica**: In contrast, Vertica stores the JSON object as written in a Flex Table, preserving the whole record and using a view to allow access via SQL to the array. The DBA can choose which (if any) columns should be materialized as database columns; this approach is more complicated from an end-user perspective but ensures that data is never lost. Vertica also does not support querying JSON strings directly except by abusing functions developed for use on Flex tables.
 
