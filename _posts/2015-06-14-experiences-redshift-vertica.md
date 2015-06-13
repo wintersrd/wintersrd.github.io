@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Redshift vs Vertica: query experience
+title: Redshift vs Vertica, an analyst's experience
 tags:
 - Redshift
 - Vertica
@@ -34,3 +34,8 @@ When it comes to conducting analysis on very large structured data sets, there a
 * **Vertica**: The reason that column stores are so performant is the physical sorting and partitioning of the data by column; like indices, tuning for performance is a long term process and may require many iterations. Vertica allows multiple sort and compression designs for each table, allowing one to optimize for a variety of queries at the cost of load performance. Additionally, changes can be executed on the fly without impacting end users or dropping tables.
 
 * **Redshift**: Redshift allows the same level of sorting/node distribution logic, but each table can only have one physical manifestation. Additionally, changes to the physical structure require the table to be dropped and recreated. This significantly slows down the DBA's work on performance tuning.
+
+
+###Conclusion
+
+So, which one is "better"? Objectively, neither - both platforms bring strengths and weaknesses to the table. I would argue that Vertica has a more mature functionality set and is easier/more flexible to work in, with the downsides of higher cost and more administrative work required.

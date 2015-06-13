@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Data Vault Automation: Source extraction
+title: Data Vault Loading Automation
 tags:
 - Data Vault
 - Automation
