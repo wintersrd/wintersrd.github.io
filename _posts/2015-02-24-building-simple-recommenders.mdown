@@ -8,5 +8,6 @@ tags:
 ---
 
 ### Introduction
+
 Now that we have both an offline and real-time event stream available, we need to calculate a recommender model to determine what to serve users. Fundamentally, most item-based recommenders work to answer the same question: "given product 1, what products (2-N) should I show a customer (and how good of a recommendation are they)"? There are a number of complex modeling techniques available and off-the-shelf functions in tools like [Mahout](http://mahout.apache.org/) and [Prediction.IO](http://prediction.io/), one of the best ways to familiarize oneself with how these models work is to calculate it yourself. To that end, an easy starting point is a [slope one mode](http://en.wikipedia.org/wiki/Slope_One), a non-trivial way to calculate item and user similarities.
 
