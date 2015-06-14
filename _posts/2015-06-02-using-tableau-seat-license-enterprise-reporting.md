@@ -25,7 +25,7 @@ As imaginable, this could all be compiled into an email using a tool like [Blat]
 
 To make this work, three things are required: the base report to distribute, a table containing the filter clause and recipient email, and an email provider who plays well with Python (we use [SendGrid](https://sendgrid.com/) as they have a convenient library). In our job we've added additional controls to provide multiple scheduling options, choose on a recipient basis what attachments are included, and track the last successful distribution, but the base job is relatively straightforward (presume the reference table contains salesperson and email):
 
-```
+```python
 import sendgrid
 import pyodbc
 import os
