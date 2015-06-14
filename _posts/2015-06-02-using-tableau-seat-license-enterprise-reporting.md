@@ -23,13 +23,16 @@ As imaginable, this could all be compiled into an email using a tool like [Blat]
 
 ###Distributing personal reports
 
-To make this work, three things are required: the base report to distribute, a table containing the filter clause and recipient email, and an email provider who plays well with Python (we use [SendGrid](https://sendgrid.com/) as they have a convenient library). In our job we've added additional controls to provide multiple scheduling options, choose on a recipient basis what attachments are included, and track the last successful distribution, but the base job is relatively straightforward (presume the reference table contains salesperson and email):
+To make this work, three things are required: the base report to distribute, a table containing the filter clause and recipient email, and an email provider who plays well with Python (we use [SendGrid](https://sendgrid.com/) as they have a convenient library). In our job we've added additional controls to provide multiple scheduling options, choose on a recipient basis what attachments are included, and track the last successful distribution, but the base job is relatively straightforward (presume the reference table contains salesperson, region, and email):
 
 ```python
 import sendgrid
 import pyodbc
 import os
 import datetime
+
+sendgrid_user = 'my_user'
+sendgrid_pass = 'my_pass'
 
 tmp_folder = 'C:\\temp\\'
 tableau_folder = 'C:\\Program Files\\Tableau\\Tableau Server\
@@ -41,7 +44,7 @@ tab_pass = 'my_admin_pass'
 def return_recipients():
     odbc_cxn = pyodbc.connect('DSN=my_db')
     cxn = odbc_cxn.cursor()
-    cxn.execute("select salesperson_name, salesperson_email from ref_table")
+    cxn.execute("select salesperson_name, region, salesperson_email from ref_table")
     results = cxn.fetchall()
     cxn.close()
     odbc_cxn.close()
@@ -86,7 +89,7 @@ def main():
     fileName = baseReport.split('/')[0]
     email_list = return_recipients()
     for recipient in email_list:
-        filteredName = baseReport + "?Sales Person=" + recipient.salesperson_name
+        filteredName = baseReport + "?Region=" + recipient.region
         attachments = generate_files(baseReport, fileName, filteredName)
         send_email(recipient.salesperson_name, recipient.salesperson_email, fileName, attachments)
         for file in attachments:
@@ -102,4 +105,9 @@ And that's it! With this small piece of code, every member in the organization c
 * Database checks can be added for given reports (ex. check that sales data is complete at 7 AM before sending out the PDF)
 * Multiple reports or PNGs could be consolidated into one email
 * The entire message body can be tuned/customized to meet business needs. For example, populating the summary statistics into the subject for better experience
+
+
+What might it look like? With the Superstore sample data:
+
+![personalized report]({{site.url}}/assets/personal_report_example.png)
 
