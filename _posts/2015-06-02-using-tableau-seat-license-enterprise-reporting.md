@@ -32,8 +32,8 @@ import os
 import datetime
 
 tmp_folder = 'C:\\temp\\'
-tableau_folder = 'C:\\Program Files\\Tableau\\Tableau Server\\9.0\\bin\
-\\tabcmd.exe'
+tableau_folder = 'C:\\Program Files\\Tableau\\Tableau Server\
+    \\9.0\\bin\\tabcmd.exe'
 tab_user = 'my_admin'
 tab_pass = 'my_admin_pass'
 
@@ -50,7 +50,7 @@ def return_recipients():
 def generate_files(baseReport, fileName, filteredName):
     attachments = []
     os.command(tableau_folder +
-               ' login -s https://reporting.travelbird.com -u %s -p %s') % \
+        ' login -s https://reporting.travelbird.com -u %s -p %s') % \
         (tab_user, tab_pass)
     os.command(tableau_folder + ' export %s --png -f "%s%s.png"') % \
         (filteredName, tmp_folder, fileName)
