@@ -11,8 +11,9 @@ It's an interesting contrast from the usual approaches like A/B testing because 
 **1. Assumptions of customer preference should always be tested:** Blue Mango shared the results of a test based on the idea that customers would be more preferential towards a brand they already owned; for example, Samsung customers would respond stronger to a Samsung ad than an LG one. In only case (Apple) did they find this to be the case.
 
 **2. Effective personalization should be based on intrinsic needs:** Incentro broke down personalization into three theories of why individuals are influenced:
-    * _Persuasive:_ The information presented is convincing that this the right choice
 
-    * _Motivation level:_ The effort required to take the action is low relative to my intrinsic motivation (why not?)
+    - _Persuasive:_ The information presented is convincing that this the right choice
 
-    * _Proximity:_ The offer is presentated at a time/place where it aligns to a consumer's intrinsic needs
+    - _Motivation level:_ The effort required to take the action is low relative to my intrinsic motivation (why not?)
+
+    - _Proximity:_ The offer is presentated at a time/place where it aligns to a consumer's intrinsic needs
