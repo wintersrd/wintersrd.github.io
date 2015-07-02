@@ -1,0 +1,29 @@
+What is this "big data" stuff?
+ - Big, Small, Structured, Unstructured
+ - The Vs
+ - How it's changing the BI landscape
+ - What are companies hoping to achieve vs trad BI
+ - What does an organization need to be successful with BD?
+A big data journey
+ - Our players: Spil Games, Bijenkorf
+ - Our landscapes (reference architecture)
+ - How did it start? Business case/objectives
+ - Initial steps
+ - Building the team
+ - Target architecture/tools
+    - What is the difference in tooling/systems/landscape?
+        - Hadoop, MPP
+        - Tableau, Looker, etc
+        - ETL vs ELT
+    - Open vs Commercial, who's winning where?
+ - Roadmaps of achievements, changes, mistakes
+ - Benefits created
+ - Biggest pitfalls to avoid
+Looking to the future
+ - What's coming in the BI space?
+    - Real time
+    - In memory
+    - Bigger data
+ - How to deal with what's here now?
+    - References, learning resources
+    - Skills to be ready today
