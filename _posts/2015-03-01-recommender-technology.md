@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Real-time recommenders, part one: Overview of Technology
+title: Real-time recommenders, part one - Overview of Technology
 tags:
 - Recommender
 ---
