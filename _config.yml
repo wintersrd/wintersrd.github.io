@@ -7,12 +7,11 @@ redcarpet:
 #
 # Use of `relative_permalinks` ensures post links from the index work properly.
 permalink:           pretty
-relative_permalinks: true
 
 # Setup
-title:               'Dangerous Data'
-tagline:             'Robert Danger Winters'
-description:         'The blog of Rob Winters, Data Nerd'
+title:               'Robert D Winters'
+tagline:             'Experienced BI Practitioner'
+description:         'The blog of Rob Winters'
 url:                 http://wintersrd.github.io
 baseurl:             /
 paginate:            5
