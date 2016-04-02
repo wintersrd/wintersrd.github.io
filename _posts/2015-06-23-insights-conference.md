@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Insights Conference 2015\: Neuromarketing in eCommerce
+title: Insights Conference 2015, Neuromarketing in eCommerce
 tags:
 - Conferences
 ---
