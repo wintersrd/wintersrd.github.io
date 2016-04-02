@@ -4,10 +4,17 @@ title: About
 ---
 
 <p class="message">
+<<<<<<< HEAD
   Welcome to the blog of Rob Winters, experienced BI leader.
 </p>
 
 I have been working in the BI space for almost ten years and leading teams for most of them. During the time I have worked in data warehousing, report development, financial analytics, data science, business analytics, and systems development... In other words, I've done at least a little in every aspect of a BI stack. As of late my focus has been predominantly on web analytics and data science, but recent projects also include designing and implementing a fully automated, metadata-driven Data Vault data warehouse for a major retailer in the Netherlands and building the personalization platform for a travel company.
+=======
+  Welcome to the blog of Rob Winters, a data nerd and experienced BI leader.
+</p>
+
+I have been working in the BI space for ten years and leading teams for most of them. During the time I have worked in data warehousing, report development, financial analytics, data science, business analytics, and systems development... In other words, I've done at least a little in every aspect of a BI stack. As of late my focus has been predominantly on web analytics and data science, but recent projects also include designing and implementing a fully automated, metadata-driven Data Vault data warehouse for a major retailer in the Netherlands.
+>>>>>>> parent of b4ca3fd... Added missing CSS
 
 If you'd like to know more, I would invite you to:
 
