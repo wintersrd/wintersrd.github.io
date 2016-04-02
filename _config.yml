@@ -12,11 +12,7 @@ permalink:           pretty
 title:               'Robert D Winters'
 tagline:             'Experienced BI Practitioner'
 description:         'The blog of Rob Winters'
-<<<<<<< HEAD
 url:                 http://robertwinters.nl
-=======
-url:                 http://wintersrd.github.io
->>>>>>> parent of 5d122ed... few tweaks
 baseurl:             /
 paginate:            5
 
