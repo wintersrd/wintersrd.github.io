@@ -1,4 +1,4 @@
-baseurl = "https://robertwinters.nl"
+baseurl = "http://robertwinters.nl"
 languageCode = "en-us"
 title = "Robert Winters"
 theme = "hyde"
