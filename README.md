@@ -1,5 +1,6 @@
 npf.io
-===
+=====
 
-This is the code behind the site [npf.io](http://npf.io), used by
-[Hugo](http://hugo.spf13.com) to generate a static html site.
+This is the html behind [npf.io](http://npf.io).  It was generated from the code
+in http://github.com/natefinch/npf using the [Hugo](http://hugo.spf13.com)
+static site generator.

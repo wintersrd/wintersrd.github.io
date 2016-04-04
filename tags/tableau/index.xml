@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Robert Winters</title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://robertwinters.nl/tags/tableau/</link>
+    <language>en-us</language>
+    <author>Rob Winters</author>
+    <copyright>2015 Rob Winters</copyright>
+    <updated>Mon, 22 Jun 2015 00:00:00 UTC</updated>
+    
+    
+    <item>
+      <title>The Power of Level of Detail Calculations in Tableau</title>
+      <link>http://robertwinters.nl/2015/06/2015-06-22-lod-calcs-in-tableau/</link>
+      <pubDate>Mon, 22 Jun 2015 00:00:00 UTC</pubDate>
+      <author>Rob Winters</author>
+      <guid>http://robertwinters.nl/2015/06/2015-06-22-lod-calcs-in-tableau/</guid>
+      <description>&lt;p&gt;Just a quick one, we&amp;rsquo;ve been playing a lot with level of detail calculations lately in Tableau 9 and I have to say, they&amp;rsquo;re &lt;em&gt;incredible&lt;/em&gt;, especially when combined with context filtering. A few useful ones so far:&lt;/p&gt;
+
+&lt;p&gt;###Customer Lifetime Value
+Presuming you have a transactions table:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;First transaction: {FIXED [customer_id] : min([transaction_date])}
+Tenure month: DATEDIFF(&#39;month&#39;,[First transaction], [transaction_date])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;###RFM (Recency, Frequency, Lifetime Value) Modeling&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Recency: DATEDIFF(&#39;month&#39;,{FIXED [customer_id] : max([transaction_date])})
+Frequency: {FIXED [customer_id] : countd([order_id])}
+Lifetime Value: {FIXED [customer_id] : sum([order_value])}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;###Salesperson effectiveness (% index vs team average)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Size of Team: {FIXED [team_id] : countd([account_mgr_name])}
+Team Revenues: {FIXED [team_id] : sum([order_value])}
+Salesperson Index: sum([order_value])/avg([Team Revenues]/[Size of Team])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Those are a few examples, but these are really a game-changer with Tableau; now we can skip entire subqueries and ETL processes, massively accelerating analytics and dashboard development.&lt;/p&gt;
+</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>Providing personal push reporting via Tableau</title>
+      <link>http://robertwinters.nl/2015/06/2015-06-02-personal-tableau-push-reporting/</link>
+      <pubDate>Tue, 02 Jun 2015 00:00:00 UTC</pubDate>
+      <author>Rob Winters</author>
+      <guid>http://robertwinters.nl/2015/06/2015-06-02-personal-tableau-push-reporting/</guid>
+      <description>&lt;p&gt;Tableau is one of my favorite Business Intelligence platforms: it achieves an excellent balance of flexibility and control and allows users to explore the data and create new insights. However, the pricing can be prohibitively expensive for small companies ($1k per user up front, $200 per year afterwards) and not all members of the organization require the full interactor experience: some people just want to see what happened yesterday, last week, or last month. As a result, many companies start with just a limited use PoC and miss a great opportunity to get the organization used to looking at the numbers. At TravelBird we&amp;rsquo;ve built a Python script to allow everyone in the company (even those without Tableau licenses) to receive a personalized report every day.&lt;/p&gt;
+
+&lt;p&gt;###The key: tabcmd and URL filters&lt;/p&gt;
+
+&lt;p&gt;One of the most powerful Tableau tools available to a BI Manager who wants to share data is tabcmd, which allows incredible functionality to generate images, export PDFs and data, and manage a number of other tasks on the server. For example, if we imagine our server is &lt;em&gt;&lt;a href=&#34;https://reporting.MyCompany.com&#34;&gt;https://reporting.MyCompany.com&lt;/a&gt;&lt;/em&gt;, the workbook is &lt;em&gt;Daily Sales Report&lt;/em&gt;, and the default view is &lt;em&gt;Yesterday Sales Summary&lt;/em&gt;, then to generate a PNG summary, PDF report, and the underlying data we could execute:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tabcmd login -s https://reporting.MyCompany.com -u &amp;lt;admin_username&amp;gt; -p &amp;lt;admin_password&amp;gt;
+tabcmd export &amp;quot;Daily Sales Report/Yesterday Sales Summary&amp;quot; --pdf -f &amp;quot;C:\output\Sales.pdf&amp;quot;
+tabcmd get &amp;quot;Daily Sales Report/Yesterday Sales Summary&amp;quot; --png -f &amp;quot;C:\output\summary.png&amp;quot;
+tabcmd export &amp;quot;Daily Sales Report/Yesterday Sales Summary&amp;quot; --csv -f &amp;quot;C:\output&#39;sales.csv&amp;quot;
+tabcmd logout
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As imaginable, this could all be compiled into an email using a tool like &lt;a href=&#34;http://www.blat.net/&#34;&gt;Blat&lt;/a&gt; and distributed to a group. However, the trick to personal emails are Tableau&amp;rsquo;s URL filters, which can be used both on the web and with tabcmd. For example, using &lt;em&gt;&lt;a href=&#34;https://reporting.mycompany.com/#/DailySalesReport/YesterdaySalesSummary&#34;&gt;https://reporting.mycompany.com/#/DailySalesReport/YesterdaySalesSummary&lt;/a&gt;&lt;/em&gt; will show the organization&amp;rsquo;s total performance, but adding &lt;strong&gt;?SalesPerson=Joe Smith&lt;/strong&gt; to the end will filter the data to only Joe. The real power to this trick is that &lt;strong&gt;the filter does not need to be visible on the dashboard, only present in the workbook filters&lt;/strong&gt;. Provided the reports are built with the desired filter in the data set, almost any report can be automatically personalized on distribution.&lt;/p&gt;
+
+&lt;p&gt;###Distributing personal reports&lt;/p&gt;
+
+&lt;p&gt;To make this work, three things are required: the base report to distribute, a table containing the filter clause and recipient email, and an email provider who plays well with Python (we use &lt;a href=&#34;https://sendgrid.com/&#34;&gt;SendGrid&lt;/a&gt; as they have a convenient library). In our job we&amp;rsquo;ve added additional controls to provide multiple scheduling options, choose on a recipient basis what attachments are included, and track the last successful distribution, but the base job is relatively straightforward (presume the reference table contains salesperson, region, and email):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import sendgrid
+import pyodbc
+import os
+import datetime
+
+sendgrid_user = &#39;my_user&#39;
+sendgrid_pass = &#39;my_pass&#39;
+
+tmp_folder = &#39;C:\\temp\\&#39;
+tableau_folder = &#39;C:\\Program Files\\Tableau\\Tableau Server\
+    \\9.0\\bin\\tabcmd.exe&#39;
+tab_user = &#39;my_admin&#39;
+tab_pass = &#39;my_admin_pass&#39;
+
+
+def return_recipients():
+    odbc_cxn = pyodbc.connect(&#39;DSN=my_db&#39;)
+    cxn = odbc_cxn.cursor()
+    cxn.execute(&amp;quot;select salesperson_name, region, salesperson_email from ref_table&amp;quot;)
+    results = cxn.fetchall()
+    cxn.close()
+    odbc_cxn.close()
+
+
+def generate_files(baseReport, fileName, filteredName):
+    attachments = []
+    os.command(tableau_folder +
+        &#39; login -s https://reporting.travelbird.com -u %s -p %s&#39;) % \
+        (tab_user, tab_pass)
+    os.command(tableau_folder + &#39; export %s --png -f &amp;quot;%s%s.png&amp;quot;&#39;) % \
+        (filteredName, tmp_folder, fileName)
+    attachments.append(&#39;%s.png&#39; % fileName)
+        os.command(tableau_folder + &#39; export %s --pdf -f &amp;quot;%s%s.pdf&amp;quot;&#39;) % \
+            (filteredName, tmp_folder, fileName)
+        attachments.append(&#39;%s.pdf&#39; % fileName)
+        os.command(tableau_folder + &#39; export %s --csv -f &amp;quot;%s%s.csv&amp;quot;&#39;) % \
+            (filteredName, tmp_folder, fileName)
+        attachments.append(&#39;%s.csv&#39; % fileName)
+    os.command(tableau_folder + &#39; logout&#39;)
+    return attachments
+
+
+def send_email(user, toAddress, subject, attachments):
+    sg = sendgrid.SendGridClient(sendgrid_user, sendgrid_pass)
+    message = sendgrid.Mail()
+    message.set_from(from_email)
+    message.set_subject(subject)
+    body = &#39;Good morning %s,\n&#39; % user
+    body += &#39;Attached is the %s report for %s.\n\n&#39; % \
+        (subject, time.strftime(&#39;%a, %d %b %Y&#39;))
+    body += &#39;For questions, please contact bi@MyCompany.com&#39;
+    message.set_text(body)
+    message.add_to(toAddress)
+    for attachment in attachments:
+        message.add_attachment(attachment, tmp_folder + attachment)
+    sg.send(message)
+
+
+def main():
+    baseReport = &#39;Daily Sales Report/Yesterday Sales Summary&#39;
+    fileName = baseReport.split(&#39;/&#39;)[0]
+    email_list = return_recipients()
+    for recipient in email_list:
+        filteredName = baseReport + &amp;quot;?Region=&amp;quot; + recipient.region
+        attachments = generate_files(baseReport, fileName, filteredName)
+        send_email(recipient.salesperson_name, recipient.salesperson_email, fileName, attachments)
+        for file in attachments:
+            os.remove(file)
+
+
+if __name__ == &#39;__main__&#39;:
+    main()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And that&amp;rsquo;s it! With this small piece of code, every member in the organization can start the day with their personalized report and have the full data if they need to do further analysis. As opposed to the Tableau email platform, this script based approach can offer a huge amount of flexibility:
+* Central BI management of distributions and distributed content
+* Database checks can be added for given reports (ex. check that sales data is complete at 7 AM before sending out the PDF)
+* Multiple reports or PNGs could be consolidated into one email
+* The entire message body can be tuned/customized to meet business needs. For example, populating the summary statistics into the subject for better experience&lt;/p&gt;
+
+&lt;p&gt;What might it look like? With the Superstore sample data:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;{{site.url}}/assets/personal_report_example.png&#34; alt=&#34;personalized report&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>Automating Tableau Backups via AWS</title>
+      <link>http://robertwinters.nl/2015/03/2015-03-08-automatic-tableau-backups-to-s3/</link>
+      <pubDate>Sun, 08 Mar 2015 00:00:00 UTC</pubDate>
+      <author>Rob Winters</author>
+      <guid>http://robertwinters.nl/2015/03/2015-03-08-automatic-tableau-backups-to-s3/</guid>
+      <description>
+
+&lt;h3 id=&#34;introduction:6a2ccbe037512dd4d211ba76c4c998d1&#34;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;Tableau is far and away my favorite Business Intelligence tool for its ease of development and performance on small (&amp;lt;20M row) extracts, but I have always found the backup approach disappointing. Each backup can account for a substantial amount of disk space, there is no default backup rotation, and Windows offers insufficient tooling to effectively handle these tasks. Enter &lt;a href=&#34;https://boto.readthedocs.org/en/latest/&#34;&gt;boto&lt;/a&gt;, the Python library for AWS. Using boto plus S3 and tabadmin, we were able to build a backup solution for Tableau which is:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Infinitely space scalable&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Fully automated and can email on failure&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Handles daily/weekly/monthly backup rotation automatically. Currently we keep daily for two weeks, weekly for six months, and monthly for an indefinite period.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Low cost. As of February 2015 the storage cost of S3 is approximately $0.03 per month, so keeping backups only runs a few tens of dollars per year.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;components:6a2ccbe037512dd4d211ba76c4c998d1&#34;&gt;Components&lt;/h3&gt;
+
+&lt;p&gt;There are several critical functions to generating and rotating the backups effectively:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Options manager:&lt;/strong&gt; To read configuration details like AWS keys, bucket names, file naming conventions, etc&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Backup extractor:&lt;/strong&gt; To pull the backup, in this case just a system call to tabadmin&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3. Uploader:&lt;/strong&gt; Used to place the file in S3 and validate its placement. Given the file sizes, this must be a multipart upload&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4. Backup Rotator:&lt;/strong&gt; Used to eliminate backups which no longer fit our retention policies&lt;/p&gt;
+
+&lt;h3 id=&#34;options-management:6a2ccbe037512dd4d211ba76c4c998d1&#34;&gt;Options Management&lt;/h3&gt;
+
+&lt;p&gt;Options were handled using the argparse and option parser libraries to store configuration details on our Tableau server; our configuration options were:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[aws]
+key: 
+secret: 
+bucket: 
+days_to_keep_daily: 14
+days_to_keep_weekly: 180
+
+
+[Tableau] 
+tempdir: C:/BACKUPS/
+tabadmin_path: C:/Program Files/Tableau/Tableau Server/8.3/bin/tabadmin.exe
+filename_base: TABLEAU_BACKUP
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This affords the flexibility to easily change rotation schedule in the future.&lt;/p&gt;
+
+&lt;h3 id=&#34;backup-extraction:6a2ccbe037512dd4d211ba76c4c998d1&#34;&gt;Backup Extraction&lt;/h3&gt;
+
+&lt;p&gt;Handled using a simple system call to the tabadmin command based on the parameters set in the config file:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def generate_extract(configs):
+	call(configs.get(&#39;Tableau&#39;,&#39;tabadmin_path&#39;) + &amp;quot; backup -d &amp;quot; + configs.get(&#39;Tableau&#39;,&#39;tempdir&#39;) + configs.get(&#39;Tableau&#39;,&#39;filename_base&#39;))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;uploading-and-validating:6a2ccbe037512dd4d211ba76c4c998d1&#34;&gt;Uploading and validating&lt;/h3&gt;
+
+&lt;p&gt;To upload the backup and validate the object, we built a number of small functions to upload the file and confirm its placement. Our files are laoded in a naming convention S3://{bucket}/{tableau_path}/{year}/{month}/{filename_root}-YYYY-MM-DD.tsbak which makes it easy to recover the appropriate backup. Specific functions used include:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;A multipart file uploader which is &amp;ldquo;borrowed&amp;rdquo; wholesale from &lt;a href=&#34;http://boto.readthedocs.org/en/latest/s3_tut.html#storing-large-data&#34;&gt;boto&amp;rsquo;s S3 examples&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;A small function to validate the upload was successful using bucket.list()&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;file-rotation:6a2ccbe037512dd4d211ba76c4c998d1&#34;&gt;File rotation&lt;/h3&gt;
+
+&lt;p&gt;Since we are backing up daily but have a tiered backup strategy, the most trivial way to do so is to generate a list of valid file names and remove any which do not conform to the list. Specifically, we will need:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;All file names which fit in the daily retention window (14 days ago through today)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;All file names which match a Sunday (chosen snapshot day) and are between six months ago and today&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;All file names which have &amp;ldquo;01&amp;rdquo; as the date, regardless of year/month&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;As a day can fit 0-3 of these conditions, the easiest solution was to generate three distinct lists, merge them, and deduplicate them using the set function. We can then pull a list of all keys from S3 for our Tableau backups, filtering them, and then deleting the undesired files. One caveat associated with S3 keys from boto: the file name is treated is the entire path after the bucket, so it is necessary to parse out the relevant information for finding the correct file. To do so, the function below is used:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def remove_old(connection, configs):
+	keys = connection.list(&#39;tableau_backups&#39;)
+	valid_keys = keys_to_keep(connection, configs)
+	keylist = []
+	for key in keys:
+		keyname = key.key.rsplit(&#39;/&#39;,1)[1]
+		if keyname not in valid_keys:
+			keylist.append(key.key)
+	for j in keylist:
+		connection.delete_key(j)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;conclusion:6a2ccbe037512dd4d211ba76c4c998d1&#34;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;In addition to the functionality outlined above, it&amp;rsquo;s also helpful to add in email notification in the event of failure and some additional logging. That said, this utility massively reduces data loss risks with Tableau and introduces a useful, low cost mechanism to maintain any easily restorable history of the server.&lt;/p&gt;
+</description>
+    </item>
+    
+    
+  </channel>
+</rss>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Robert Winters</title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://robertwinters.nl/tags/business-intelligence/</link>
+    <language>en-us</language>
+    <author>Rob Winters</author>
+    <copyright>2015 Rob Winters</copyright>
+    <updated>Sat, 27 Jun 2015 00:00:00 UTC</updated>
+    
+    
+    <item>
+      <title>The Role of Self-Service in your Business Intelligence Strategy</title>
+      <link>http://robertwinters.nl/2015/06/2015-06-27-questions-to-ask-for-self-service-bi/</link>
+      <pubDate>Sat, 27 Jun 2015 00:00:00 UTC</pubDate>
+      <author>Rob Winters</author>
+      <guid>http://robertwinters.nl/2015/06/2015-06-27-questions-to-ask-for-self-service-bi/</guid>
+      <description>&lt;p&gt;The BI industry is subject to a variety of debates currently, from &lt;a href=&#34;http://www.informationweek.com/big-data/big-data-analytics/hadoop-5-undeniable-truths/a/d-id/1316832&#34;&gt;whether or not Hadoop will replace the data warehouse&lt;/a&gt; to &lt;a href=&#34;http://www.rtinsights.com/iot-real-time-analytics-hype-cycle-vs-delivering-results/&#34;&gt;internet of things and real time analytics&lt;/a&gt;, but one of the topics that most directly impacts your business partners is much more simple: to what degree should a BI team build out a self-service infrastructure? According to some vendors, &lt;a href=&#34;http://www.cbronline.com/news/big-data/platforms/sap-bi-2015-top-5-take-aways-4603283&#34;&gt;self-service analytics are bullshit&lt;/a&gt;; according to others, &lt;a href=&#34;http://www.kdnuggets.com/2014/11/the-future-analytics-3-predictions-bi-2015.html&#34;&gt;self-service is the future of BI&lt;/a&gt;. Regardless of which camp you belong to, before moving down the path of self-service there are five questions you should ask yourself:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. What business benefit do I hope to achieve?&lt;/strong&gt; Far and away, this is the most critical question to ask before moving forward. Self-service can afford an organization a variety of benefits: faster report development, better analytical capacity in other departments, more various views on the data to address related but different questions. Identifying and prioritizing the desired benefit(s) will be critical to moving towards a self-service organization.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Is my data ready for self-service?&lt;/strong&gt; Many BI teams have built up cumbersome data structures and flows over the years to meet report demands and complex business rules. However, a self-service data model will need to be much simpler if users will be working directly against what you make available; the average business user will have the knowledge or willingness to memorize that D_ORD_CHG_CD represents order status code while F_ORD_CHG_AMT represents the order amount. Scoping your data and how to structure it for layman consumption will be critical to get user buy in.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3. Are my users ready for self service?&lt;/strong&gt; Organizations often put out self-service tools as &amp;ldquo;just another reporting solution&amp;rdquo;, but the real benefit to self-service comes from changing how the organization interacts with your data. Properly assessing the training required to empower your organization&amp;rsquo;s decision making should happen &lt;em&gt;before&lt;/em&gt; rolling out new platforms.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4. Is my BI team ready for new questions?&lt;/strong&gt; Just as the delivery mechanism and user interactions change, the questions posed to your analysts and developers will differ. Your BI team will need to be ready to partner with the business in discovering &lt;em&gt;how&lt;/em&gt; and &lt;em&gt;why&lt;/em&gt; via exploration and collaboration, not just delivering the numbers.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;5. How will I handle governance, quality control, and data security?&lt;/strong&gt; By exposing business users to underlying data and allowing them the freedom to create on their own, the risk increases exponentially that someone will see something they shouldn&amp;rsquo;t or a view will be created which is misleading and/or inaccurate. While this is nothing new (folks have been lying with Excel for years), it creates a new challenge because it is &amp;ldquo;in the reporting system&amp;rdquo;. Have a strategy to manage/identify &amp;ldquo;official&amp;rdquo; sources and reports, protect users from sharing confidential information, and ensure the quality of publicly available reporting within your environment.&lt;/p&gt;
+
+&lt;p&gt;Additional resources:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Tableau:&lt;/strong&gt; &lt;a href=&#34;http://www.tableau.com/learn/whitepapers/deploying-flexible-self-service-analytics&#34;&gt;Deploying Flexible, Self-Service Analytics&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Qlik:&lt;/strong&gt; &lt;a href=&#34;http://www.qlik.com/en/explore/products/empowers-it&#34;&gt;Welcome to the Era of Governed Discovery&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;TDWI:&lt;/strong&gt; &lt;a href=&#34;https://www.microstrategy.com/Strategy/media/downloads/white-papers/TDWI_Self-Service-BI.pdf&#34;&gt;Checklist: Self-Service BI&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    
+  </channel>
+</rss>

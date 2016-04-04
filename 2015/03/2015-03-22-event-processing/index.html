@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+
+  <title> Real-time recommenders, part three -  Event tracking (processing events)  &middot; Robert Winters </title>
+
+  
+  <link rel="stylesheet" href="http://robertwinters.nl/css/poole.css">
+  <link rel="stylesheet" href="http://robertwinters.nl/css/syntax.css">
+  <link rel="stylesheet" href="http://robertwinters.nl/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Robert Winters" />
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400,300' rel='stylesheet' type='text/css'>
+
+  <script src="//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+  <script>
+    WebFont.load({
+      google: {
+        families: ['Raleway']
+      }
+    });
+  </script>
+
+</head>
+
+<body>
+
+  <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1 class="brand"><a href="http://robertwinters.nl">Robert Winters</a></h1>
+      <p class="lead">
+       BI Practitioner 
+      </p>
+    </div>
+
+
+
+    <ul class="sidebar-nav">
+      <li><a href="http://robertwinters.nl/blog">Posts</a></li>
+      
+        <li><a href="/about/">About </a></li>
+      
+      <br/>
+      
+    </ul>
+      
+      
+      
+      <a href="https://github.com/wintersrd"><i class="fa fa-github-square"></i></a>&nbsp;&nbsp;
+      
+
+    <p class="footnote">powered by <a href="http://hugo.spf13.com">Hugo</a> <br/>
+    &copy; 2016 Nate Finch. All rights reserved.</p>
+    
+  </div>
+</div>
+
+
+  <div class="content container">
+    <div class="post">
+    <h1 class="post-title">Real-time recommenders, part three -  Event tracking (processing events)</h1>
+    <span class="post-date">Mar 22, 2015</span>
+    
+    
+
+<h3 id="introduction:67586a2fe6487ff004d9849a06b13c4b">Introduction</h3>
+
+<p>In order to utilize our event data from Kinesis we have configured two separate feeds: one non-real-time for reporting and archiving purposes and one real time feed for use cases like recommendations and last viewed items. While snowplow has use case specific libraries for both, we built our own utilities for the following reasons:</p>
+
+<ul>
+<li><p><strong>Flexibility:</strong> Building our own library allows easier loading to multiple database engines and/or unique archive flows</p></li>
+
+<li><p><strong>Speed:</strong> Using a basic loader allows event rotation into the database once a minute without any loss of information.</p></li>
+
+<li><p><strong>Archive Structure:</strong> The default snowplow libraries do not make any provision for DB loading and archiving to S3; for reliability purposes we wanted both</p></li>
+</ul>
+
+<h3 id="database-loading:67586a2fe6487ff004d9849a06b13c4b">Database loading</h3>
+
+<p>In order to process the data for loading into the database we are using a mixture of the default <a href="https://github.com/snowplow/snowplow/tree/master/3-enrich/scala-kinesis-enrich">Kinesis Enricher</a>, sed, a small Python script for event validation, and cronolog to write to a file. The exact flow looks something like:</p>
+
+<ol>
+<li><p>Kinesis enricher stderr and stdout to stdout <code>/var/lib/snowplow_enrich/snowplow-kinesis-enrich-0.2.0 --config /var/lib/snowplow_enrich/snowplow.conf 2&gt;&amp;1</code></p></li>
+
+<li><p>sed to remove checkpointing data from the event stream <code>sed -e '/^\[/d' | sed -e 's/\[pool.*$//'</code></p></li>
+
+<li><p>A Python script which validates whether or not the event has been processed before and validates the custom JSON objects inside the structured event labels</p></li>
+
+<li><p>Cronolog which rotates log files every minute <code>cronolog /data/logs/snowplow%Y%m%d%H%M.dat</code></p></li>
+</ol>
+
+<p>One issue with using cronolog is that it splits exactly on the minute, resulting in one event per minute being cut in half every minute. Concatenation of the logs before loading (for example, every 15 minutes) reduces the impact to one event per load, but this is still unacceptable - we would like 100% of events being written to the database. To correct, our loader uses a mixture of <strong>head</strong> and <strong>tail</strong> to grab the end of the last event for loading from the head of the log file currently being written. Once the log files are correctly merged, loading and backups become trivial:</p>
+
+<pre><code>#!/bin/bash
+
+RIGHTNOW=`date +%Y%m%d%H%M`
+MINUTEAGO=`date -d '-1 minute' +%Y%m%d%H%M`
+YEAR=`date +%Y`
+MONTH=`date +%m`
+DAY=`date +%d`
+
+find /data/logs -cmin +1 -type f -exec mv &quot;{}&quot; /data/logs/loading/ \;
+ls /data/logs/loading/snowplow*.dat | sort | xargs cat&gt; /data/logs/loading/temp.dat
+head -n 1 /data/logs/snowplow$MINUTEAGO.dat&gt;&gt;/data/logs/loading/temp.dat
+tail -n +2 /data/logs/loading/temp.dat &gt; /data/logs/loading/snowplow_merged_$RIGHTNOW.dat
+rm /data/logs/loading/snowplow2*.dat
+rm /data/logs/loading/temp.dat
+
+/opt/vertica/bin/vsql -h my.loadbalancer.path -U $1 -w $2 -c &quot;copy stg.snowplow_events from local '/data/logs/loading/snowplow_merged_$RIGHTNOW.dat' with delimiter E'\t'  rejected data '/data/logs/loading/snowplow_rejected_$RIGHTNOW.dat'&quot;
+
+gzip /data/logs/loading/snowplow_merged_$RIGHTNOW.dat
+
+s3cmd put /data/logs/loading/snowplow_merged_$RIGHTNOW.dat.gz s3://bykdwh/snowplow/$YEAR/$MONTH/$DAY/
+rm /data/logs/loading/snowplow_merged_$RIGHTNOW.dat.gz
+</code></pre>
+
+<p>Far simpler than the default loaders and extremely performant in our environment. Another advantage to having the log files on a minute (or five minute) basis is that it makes it extremely easy to restore an hour or a day if we need to reload.</p>
+
+<h3 id="real-time-processing:67586a2fe6487ff004d9849a06b13c4b">Real time processing</h3>
+
+<p>While the process outlined above is fantastic for reporting purposes, a one minute delay on the events is still not fast enough for a &ldquo;real time&rdquo; experience for users. Our objective for users is that the data is analyzed and recommendations updated before their next pageview; this gives us five seconds or less to process the event. To achieve this throughput we are using inline processing in a Python script to read specific data from the event, check records against redis, and execute a number of puts  to redis. While this approach is somewhat cumbersome and lower performance than using a language like Scala, it is still possible to achieve throughput of a few thousand events per second per thread - more than sufficient for most businesses.</p>
+
+<p>The functional workflow of real-time processing looks something like:</p>
+
+<pre><code class="language-python">import sys
+import redis
+import json
+import fileinput
+
+action_value={
+    'action1':weight,
+    'action2':weight,
+    'action3':weight
+}
+
+
+def unlist(input_list):
+    return '\t'.join(map(str,input_list))
+
+
+def process_event(event):
+    # Do some event processing to extract the correct user, event type (based on data in the event label), and SKU
+    return (user_id, event_type, product_sku)
+
+
+def main():
+    counter = 0
+    pipe = rec_set.pipeline()
+
+    for line in sys.stdin:
+        try:
+            split_tab = []
+            split_tab.append(line.split('\t'))
+            split_tab = [val for sublist in split_tab for val in sublist]
+            user_id, event_type, product_sku = process_event(split_tab)
+
+            if product_sku is not None:
+                # Do some lookups for recommendations and brand information, then load those recommendations to redis
+            else:
+                next
+        except:
+            next
+
+
+if __name__ == '__main__':
+    main()
+</code></pre>
+
+    
+
+     
+	
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost") 
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wintersrd';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the comments powered by <a href="http://disqus.com/?ref_noscript">Disqus.</a></noscript>
+</div>
+</div> 
+
+</body>w
+</html>
