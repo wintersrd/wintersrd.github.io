@@ -9,7 +9,7 @@
 
   
 
-  <title> The Power of Level of Detail Calculations in Tableau  &middot; Robert Winters </title>
+  <title> The Power of Level of Detail Calculations in Tableau  &middot; Robert Danger Winters </title>
 
   
   <link rel="stylesheet" href="http://robertwinters.nl/css/poole.css">
@@ -22,7 +22,7 @@
   <link rel="shortcut icon" href="/favicon.ico">
 
   
-  <link href="" rel="alternate" type="application/rss+xml" title="Robert Winters" />
+  <link href="" rel="alternate" type="application/rss+xml" title="Robert Danger Winters" />
 
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
@@ -44,9 +44,9 @@
   <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
-      <h1 class="brand"><a href="http://robertwinters.nl">Robert Winters</a></h1>
+      <h1 class="brand"><a href="http://robertwinters.nl">Robert Danger Winters</a></h1>
       <p class="lead">
-       BI Practitioner 
+       Experienced BI Practitioner 
       </p>
     </div>
 
@@ -57,17 +57,20 @@
       
         <li><a href="/about/">About </a></li>
       
+      <a href="http://www.slideshare.net/RobWinters" target="_blank"> My Slideshare</a>
+      <br/>
+      <a href="https://www.dropbox.com/s/0t3o2xg04ccc81r/Robert%20Winters.pdf" target="_blank">My CV</a>
       <br/>
       
     </ul>
       
-      
-      
+      <a href="https://nl.linkedin.com/in/wintersrd"><i class="fa fa-linkedin-square"></i></a>&nbsp;&nbsp;
+      <a href="http://nl.linkedin.com/in/wintersrd"><i class="fa fa-facebook-square"></i></a>&nbsp;&nbsp;
       <a href="https://github.com/wintersrd"><i class="fa fa-github-square"></i></a>&nbsp;&nbsp;
       
 
     <p class="footnote">powered by <a href="http://hugo.spf13.com">Hugo</a> <br/>
-    &copy; 2016 Nate Finch. All rights reserved.</p>
+    &copy; 2016 Rob Winters. All rights reserved.</p>
     
   </div>
 </div>
@@ -78,23 +81,26 @@
     <h1 class="post-title">The Power of Level of Detail Calculations in Tableau</h1>
     <span class="post-date">Jun 22, 2015</span>
     
-    <p>Just a quick one, we&rsquo;ve been playing a lot with level of detail calculations lately in Tableau 9 and I have to say, they&rsquo;re <em>incredible</em>, especially when combined with context filtering. A few useful ones so far:</p>
+    
 
-<p>###Customer Lifetime Value
-Presuming you have a transactions table:</p>
+<p>Just a quick one, we&rsquo;ve been playing a lot with level of detail calculations lately in Tableau 9 and I have to say, they&rsquo;re <em>incredible</em>, especially when combined with context filtering. A few useful ones so far:</p>
+
+<h3 id="customer-lifetime-value:e4fd28e5a76e95e9da93c0c0b0a15752">Customer Lifetime Value</h3>
+
+<p>Presuming you have a transactions table:</p>
 
 <pre><code>First transaction: {FIXED [customer_id] : min([transaction_date])}
 Tenure month: DATEDIFF('month',[First transaction], [transaction_date])
 </code></pre>
 
-<p>###RFM (Recency, Frequency, Lifetime Value) Modeling</p>
+<h3 id="rfm-recency-frequency-lifetime-value-modeling:e4fd28e5a76e95e9da93c0c0b0a15752">RFM (Recency, Frequency, Lifetime Value) Modeling</h3>
 
 <pre><code>Recency: DATEDIFF('month',{FIXED [customer_id] : max([transaction_date])})
 Frequency: {FIXED [customer_id] : countd([order_id])}
 Lifetime Value: {FIXED [customer_id] : sum([order_value])}
 </code></pre>
 
-<p>###Salesperson effectiveness (% index vs team average)</p>
+<h3 id="salesperson-effectiveness-index-vs-team-average:e4fd28e5a76e95e9da93c0c0b0a15752">Salesperson effectiveness (% index vs team average)</h3>
 
 <pre><code>Size of Team: {FIXED [team_id] : countd([account_mgr_name])}
 Team Revenues: {FIXED [team_id] : sum([order_value])}

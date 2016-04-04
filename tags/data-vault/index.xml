@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Robert Winters</title>
+      <title>Robert Danger Winters</title>
       <generator uri="https://hugo.spf13.com">Hugo</generator>
     <link>http://robertwinters.nl/tags/data-vault/</link>
     <language>en-us</language>
@@ -32,7 +32,7 @@
 
 &lt;h3 id=&#34;engine-workflow:133b05d48047fcbc0514da03bd26193c&#34;&gt;Engine workflow&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;{{site.url}}/assets/DV_Automation.png&#34; alt=&#34;High level data vault workflow model&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;{{site.URL}}/static/DV_Automation.png&#34; alt=&#34;High level data vault workflow model&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

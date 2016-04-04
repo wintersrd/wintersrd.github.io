@@ -9,7 +9,7 @@
 
   
 
-  <title> Redshift vs Vertica, an analyst&#39;s experience  &middot; Robert Winters </title>
+  <title> Redshift vs Vertica, an analyst&#39;s experience  &middot; Robert Danger Winters </title>
 
   
   <link rel="stylesheet" href="http://robertwinters.nl/css/poole.css">
@@ -22,7 +22,7 @@
   <link rel="shortcut icon" href="/favicon.ico">
 
   
-  <link href="" rel="alternate" type="application/rss+xml" title="Robert Winters" />
+  <link href="" rel="alternate" type="application/rss+xml" title="Robert Danger Winters" />
 
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
@@ -44,9 +44,9 @@
   <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
-      <h1 class="brand"><a href="http://robertwinters.nl">Robert Winters</a></h1>
+      <h1 class="brand"><a href="http://robertwinters.nl">Robert Danger Winters</a></h1>
       <p class="lead">
-       BI Practitioner 
+       Experienced BI Practitioner 
       </p>
     </div>
 
@@ -57,17 +57,20 @@
       
         <li><a href="/about/">About </a></li>
       
+      <a href="http://www.slideshare.net/RobWinters" target="_blank"> My Slideshare</a>
+      <br/>
+      <a href="https://www.dropbox.com/s/0t3o2xg04ccc81r/Robert%20Winters.pdf" target="_blank">My CV</a>
       <br/>
       
     </ul>
       
-      
-      
+      <a href="https://nl.linkedin.com/in/wintersrd"><i class="fa fa-linkedin-square"></i></a>&nbsp;&nbsp;
+      <a href="http://nl.linkedin.com/in/wintersrd"><i class="fa fa-facebook-square"></i></a>&nbsp;&nbsp;
       <a href="https://github.com/wintersrd"><i class="fa fa-github-square"></i></a>&nbsp;&nbsp;
       
 
     <p class="footnote">powered by <a href="http://hugo.spf13.com">Hugo</a> <br/>
-    &copy; 2016 Nate Finch. All rights reserved.</p>
+    &copy; 2016 Rob Winters. All rights reserved.</p>
     
   </div>
 </div>
@@ -78,9 +81,11 @@
     <h1 class="post-title">Redshift vs Vertica, an analyst&#39;s experience</h1>
     <span class="post-date">Jun 14, 2015</span>
     
-    <p>When it comes to conducting analysis on very large structured data sets, there are a limited number of viable players which won&rsquo;t require a second mortgage and army of consultants to use (looking at you, Exadata). For the last several years my platform of choice has been HP Vertica: it&rsquo;s fast, scales well, relatively easy to manage/performance tune, and is fairly middle of the pack for pricing. However, for the last several months I&rsquo;ve been using Redshift as my primary data warehouse and feel ready to make a comparison on where the platforms materially differ.</p>
+    
 
-<p>###Data Loading: Structured flat files</p>
+<p>When it comes to conducting analysis on very large structured data sets, there are a limited number of viable players which won&rsquo;t require a second mortgage and army of consultants to use (looking at you, Exadata). For the last several years my platform of choice has been HP Vertica: it&rsquo;s fast, scales well, relatively easy to manage/performance tune, and is fairly middle of the pack for pricing. However, for the last several months I&rsquo;ve been using Redshift as my primary data warehouse and feel ready to make a comparison on where the platforms materially differ.</p>
+
+<h3 id="data-loading-structured-flat-files:8290a9e3b177c64d60b0e5b27f06bd31">Data Loading: Structured flat files</h3>
 
 <ul>
 <li><p><strong>Vertica</strong>: Vertica&rsquo;s standard loading paradigm is to load the file via a local copy command and loads into memory. This creates a potentially volatile loading pattern (dependent on network performance) but is extremely fast a parallelizes well if the machine executing the copy statement is in the same network. When running loading jobs like &ldquo;copy all tables from a production DB&rdquo; or &ldquo;I need ad hoc data in the DB for analysis&rdquo;, Vertica was significantly faster/easier than Redshift.</p></li>
@@ -88,7 +93,7 @@
 <li><p><strong>Redshift</strong>: Refshift can load from S3, EMR, or DynamoDB (it can also load from another machine via SSH, but the mechanism to do so is enormously cumbersome). Since it is lacking in any COPY FROM LOCAL functionality, loading data from a local source is both more cumbersome and much slower. However, loading data from Hadoop (presuming it&rsquo;s an EMR cluster) is much better in Redshift.</p></li>
 </ul>
 
-<p>###Time and Time Series</p>
+<h3 id="time-and-time-series:8290a9e3b177c64d60b0e5b27f06bd31">Time and Time Series</h3>
 
 <ul>
 <li><p><strong>Redshift</strong>: Time series analysis is where Redshift falls flat; the database is lacking certain basic functions like _TO<em>TIMESTAMP</em>&hellip; god help you if you need to work with Unix epochs. Most basic date functions are represented (ex. <em>DATEDIFF</em>, <em>DATETRUNC</em>) but there are very few analytical or window functions available.</p></li>
@@ -96,7 +101,7 @@
 <li><p><strong>Vertica</strong>: In contrast, Vertica has an enormous number of date functions available to assist in analysis of event stream data (although not all functions are implemented in ISO/ANSI standards). Additionally, it&rsquo;s possible to do advanced time analytics in raw SQL. For example, sessionization of an event stream can be done using conditional true events.</p></li>
 </ul>
 
-<p>###JSON Handling</p>
+<h3 id="json-handling:8290a9e3b177c64d60b0e5b27f06bd31">JSON Handling</h3>
 
 <ul>
 <li><p><strong>Redshift</strong>: Redshift allows direct loading of JSON objects to tables and will map each key to the appropriate column during loading. This solution works well when the arrays are consistently defined as it will offer high performance on read but is a liability if new keys are constantly being added to your arrays - those new records will be ignored until the column is added to the table. Redshift also has excellent support for querying JSON objects stored in strings.</p></li>
@@ -104,7 +109,7 @@
 <li><p><strong>Vertica</strong>: In contrast, Vertica stores the JSON object as written in a Flex Table, preserving the whole record and using a view to allow access via SQL to the array. The DBA can choose which (if any) columns should be materialized as database columns; this approach is more complicated from an end-user perspective but ensures that data is never lost. Vertica also does not support querying JSON strings directly except by abusing functions developed for use on Flex tables.</p></li>
 </ul>
 
-<p>###Physical Structure Management</p>
+<h3 id="physical-structure-management:8290a9e3b177c64d60b0e5b27f06bd31">Physical Structure Management</h3>
 
 <ul>
 <li><p><strong>Vertica</strong>: The reason that column stores are so performant is the physical sorting and partitioning of the data by column; like indices, tuning for performance is a long term process and may require many iterations. Vertica allows multiple sort and compression designs for each table, allowing one to optimize for a variety of queries at the cost of load performance. Additionally, changes can be executed on the fly without impacting end users or dropping tables.</p></li>
@@ -112,7 +117,7 @@
 <li><p><strong>Redshift</strong>: Redshift allows the same level of sorting/node distribution logic, but each table can only have one physical manifestation. Additionally, changes to the physical structure require the table to be dropped and recreated. This significantly slows down the DBA&rsquo;s work on performance tuning.</p></li>
 </ul>
 
-<p>###Conclusion</p>
+<h3 id="conclusion:8290a9e3b177c64d60b0e5b27f06bd31">Conclusion</h3>
 
 <p>So, which one is &ldquo;better&rdquo;? Objectively, neither - both platforms bring strengths and weaknesses to the table. I would argue that Vertica has a more mature functionality set and is easier/more flexible to work in, with the downsides of higher cost and more administrative work required.</p>
 

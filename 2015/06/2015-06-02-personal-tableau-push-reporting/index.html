@@ -9,7 +9,7 @@
 
   
 
-  <title> Providing personal push reporting via Tableau  &middot; Robert Winters </title>
+  <title> Providing personal push reporting via Tableau  &middot; Robert Danger Winters </title>
 
   
   <link rel="stylesheet" href="http://robertwinters.nl/css/poole.css">
@@ -22,7 +22,7 @@
   <link rel="shortcut icon" href="/favicon.ico">
 
   
-  <link href="" rel="alternate" type="application/rss+xml" title="Robert Winters" />
+  <link href="" rel="alternate" type="application/rss+xml" title="Robert Danger Winters" />
 
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
@@ -44,9 +44,9 @@
   <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
-      <h1 class="brand"><a href="http://robertwinters.nl">Robert Winters</a></h1>
+      <h1 class="brand"><a href="http://robertwinters.nl">Robert Danger Winters</a></h1>
       <p class="lead">
-       BI Practitioner 
+       Experienced BI Practitioner 
       </p>
     </div>
 
@@ -57,17 +57,20 @@
       
         <li><a href="/about/">About </a></li>
       
+      <a href="http://www.slideshare.net/RobWinters" target="_blank"> My Slideshare</a>
+      <br/>
+      <a href="https://www.dropbox.com/s/0t3o2xg04ccc81r/Robert%20Winters.pdf" target="_blank">My CV</a>
       <br/>
       
     </ul>
       
-      
-      
+      <a href="https://nl.linkedin.com/in/wintersrd"><i class="fa fa-linkedin-square"></i></a>&nbsp;&nbsp;
+      <a href="http://nl.linkedin.com/in/wintersrd"><i class="fa fa-facebook-square"></i></a>&nbsp;&nbsp;
       <a href="https://github.com/wintersrd"><i class="fa fa-github-square"></i></a>&nbsp;&nbsp;
       
 
     <p class="footnote">powered by <a href="http://hugo.spf13.com">Hugo</a> <br/>
-    &copy; 2016 Nate Finch. All rights reserved.</p>
+    &copy; 2016 Rob Winters. All rights reserved.</p>
     
   </div>
 </div>
@@ -78,9 +81,11 @@
     <h1 class="post-title">Providing personal push reporting via Tableau</h1>
     <span class="post-date">Jun 2, 2015</span>
     
-    <p>Tableau is one of my favorite Business Intelligence platforms: it achieves an excellent balance of flexibility and control and allows users to explore the data and create new insights. However, the pricing can be prohibitively expensive for small companies ($1k per user up front, $200 per year afterwards) and not all members of the organization require the full interactor experience: some people just want to see what happened yesterday, last week, or last month. As a result, many companies start with just a limited use PoC and miss a great opportunity to get the organization used to looking at the numbers. At TravelBird we&rsquo;ve built a Python script to allow everyone in the company (even those without Tableau licenses) to receive a personalized report every day.</p>
+    
 
-<p>###The key: tabcmd and URL filters</p>
+<p>Tableau is one of my favorite Business Intelligence platforms: it achieves an excellent balance of flexibility and control and allows users to explore the data and create new insights. However, the pricing can be prohibitively expensive for small companies ($1k per user up front, $200 per year afterwards) and not all members of the organization require the full interactor experience: some people just want to see what happened yesterday, last week, or last month. As a result, many companies start with just a limited use PoC and miss a great opportunity to get the organization used to looking at the numbers. At TravelBird we&rsquo;ve built a Python script to allow everyone in the company (even those without Tableau licenses) to receive a personalized report every day.</p>
+
+<h3 id="the-key-tabcmd-and-url-filters:4be10db2518cc0389946805eeffeded2">The key: tabcmd and URL filters</h3>
 
 <p>One of the most powerful Tableau tools available to a BI Manager who wants to share data is tabcmd, which allows incredible functionality to generate images, export PDFs and data, and manage a number of other tasks on the server. For example, if we imagine our server is <em><a href="https://reporting.MyCompany.com">https://reporting.MyCompany.com</a></em>, the workbook is <em>Daily Sales Report</em>, and the default view is <em>Yesterday Sales Summary</em>, then to generate a PNG summary, PDF report, and the underlying data we could execute:</p>
 
@@ -93,7 +98,7 @@ tabcmd logout
 
 <p>As imaginable, this could all be compiled into an email using a tool like <a href="http://www.blat.net/">Blat</a> and distributed to a group. However, the trick to personal emails are Tableau&rsquo;s URL filters, which can be used both on the web and with tabcmd. For example, using <em><a href="https://reporting.mycompany.com/#/DailySalesReport/YesterdaySalesSummary">https://reporting.mycompany.com/#/DailySalesReport/YesterdaySalesSummary</a></em> will show the organization&rsquo;s total performance, but adding <strong>?SalesPerson=Joe Smith</strong> to the end will filter the data to only Joe. The real power to this trick is that <strong>the filter does not need to be visible on the dashboard, only present in the workbook filters</strong>. Provided the reports are built with the desired filter in the data set, almost any report can be automatically personalized on distribution.</p>
 
-<p>###Distributing personal reports</p>
+<h3 id="distributing-personal-reports:4be10db2518cc0389946805eeffeded2">Distributing personal reports</h3>
 
 <p>To make this work, three things are required: the base report to distribute, a table containing the filter clause and recipient email, and an email provider who plays well with Python (we use <a href="https://sendgrid.com/">SendGrid</a> as they have a convenient library). In our job we&rsquo;ve added additional controls to provide multiple scheduling options, choose on a recipient basis what attachments are included, and track the last successful distribution, but the base job is relatively straightforward (presume the reference table contains salesperson, region, and email):</p>
 

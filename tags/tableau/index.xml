@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Robert Winters</title>
+      <title>Robert Danger Winters</title>
       <generator uri="https://hugo.spf13.com">Hugo</generator>
     <link>http://robertwinters.nl/tags/tableau/</link>
     <language>en-us</language>
@@ -16,23 +16,26 @@
       <pubDate>Mon, 22 Jun 2015 00:00:00 UTC</pubDate>
       <author>Rob Winters</author>
       <guid>http://robertwinters.nl/2015/06/2015-06-22-lod-calcs-in-tableau/</guid>
-      <description>&lt;p&gt;Just a quick one, we&amp;rsquo;ve been playing a lot with level of detail calculations lately in Tableau 9 and I have to say, they&amp;rsquo;re &lt;em&gt;incredible&lt;/em&gt;, especially when combined with context filtering. A few useful ones so far:&lt;/p&gt;
+      <description>
 
-&lt;p&gt;###Customer Lifetime Value
-Presuming you have a transactions table:&lt;/p&gt;
+&lt;p&gt;Just a quick one, we&amp;rsquo;ve been playing a lot with level of detail calculations lately in Tableau 9 and I have to say, they&amp;rsquo;re &lt;em&gt;incredible&lt;/em&gt;, especially when combined with context filtering. A few useful ones so far:&lt;/p&gt;
+
+&lt;h3 id=&#34;customer-lifetime-value:e4fd28e5a76e95e9da93c0c0b0a15752&#34;&gt;Customer Lifetime Value&lt;/h3&gt;
+
+&lt;p&gt;Presuming you have a transactions table:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;First transaction: {FIXED [customer_id] : min([transaction_date])}
 Tenure month: DATEDIFF(&#39;month&#39;,[First transaction], [transaction_date])
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;###RFM (Recency, Frequency, Lifetime Value) Modeling&lt;/p&gt;
+&lt;h3 id=&#34;rfm-recency-frequency-lifetime-value-modeling:e4fd28e5a76e95e9da93c0c0b0a15752&#34;&gt;RFM (Recency, Frequency, Lifetime Value) Modeling&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;Recency: DATEDIFF(&#39;month&#39;,{FIXED [customer_id] : max([transaction_date])})
 Frequency: {FIXED [customer_id] : countd([order_id])}
 Lifetime Value: {FIXED [customer_id] : sum([order_value])}
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;###Salesperson effectiveness (% index vs team average)&lt;/p&gt;
+&lt;h3 id=&#34;salesperson-effectiveness-index-vs-team-average:e4fd28e5a76e95e9da93c0c0b0a15752&#34;&gt;Salesperson effectiveness (% index vs team average)&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;Size of Team: {FIXED [team_id] : countd([account_mgr_name])}
 Team Revenues: {FIXED [team_id] : sum([order_value])}
@@ -51,9 +54,11 @@ Salesperson Index: sum([order_value])/avg([Team Revenues]/[Size of Team])
       <pubDate>Tue, 02 Jun 2015 00:00:00 UTC</pubDate>
       <author>Rob Winters</author>
       <guid>http://robertwinters.nl/2015/06/2015-06-02-personal-tableau-push-reporting/</guid>
-      <description>&lt;p&gt;Tableau is one of my favorite Business Intelligence platforms: it achieves an excellent balance of flexibility and control and allows users to explore the data and create new insights. However, the pricing can be prohibitively expensive for small companies ($1k per user up front, $200 per year afterwards) and not all members of the organization require the full interactor experience: some people just want to see what happened yesterday, last week, or last month. As a result, many companies start with just a limited use PoC and miss a great opportunity to get the organization used to looking at the numbers. At TravelBird we&amp;rsquo;ve built a Python script to allow everyone in the company (even those without Tableau licenses) to receive a personalized report every day.&lt;/p&gt;
+      <description>
 
-&lt;p&gt;###The key: tabcmd and URL filters&lt;/p&gt;
+&lt;p&gt;Tableau is one of my favorite Business Intelligence platforms: it achieves an excellent balance of flexibility and control and allows users to explore the data and create new insights. However, the pricing can be prohibitively expensive for small companies ($1k per user up front, $200 per year afterwards) and not all members of the organization require the full interactor experience: some people just want to see what happened yesterday, last week, or last month. As a result, many companies start with just a limited use PoC and miss a great opportunity to get the organization used to looking at the numbers. At TravelBird we&amp;rsquo;ve built a Python script to allow everyone in the company (even those without Tableau licenses) to receive a personalized report every day.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-key-tabcmd-and-url-filters:4be10db2518cc0389946805eeffeded2&#34;&gt;The key: tabcmd and URL filters&lt;/h3&gt;
 
 &lt;p&gt;One of the most powerful Tableau tools available to a BI Manager who wants to share data is tabcmd, which allows incredible functionality to generate images, export PDFs and data, and manage a number of other tasks on the server. For example, if we imagine our server is &lt;em&gt;&lt;a href=&#34;https://reporting.MyCompany.com&#34;&gt;https://reporting.MyCompany.com&lt;/a&gt;&lt;/em&gt;, the workbook is &lt;em&gt;Daily Sales Report&lt;/em&gt;, and the default view is &lt;em&gt;Yesterday Sales Summary&lt;/em&gt;, then to generate a PNG summary, PDF report, and the underlying data we could execute:&lt;/p&gt;
 
@@ -66,7 +71,7 @@ tabcmd logout
 
 &lt;p&gt;As imaginable, this could all be compiled into an email using a tool like &lt;a href=&#34;http://www.blat.net/&#34;&gt;Blat&lt;/a&gt; and distributed to a group. However, the trick to personal emails are Tableau&amp;rsquo;s URL filters, which can be used both on the web and with tabcmd. For example, using &lt;em&gt;&lt;a href=&#34;https://reporting.mycompany.com/#/DailySalesReport/YesterdaySalesSummary&#34;&gt;https://reporting.mycompany.com/#/DailySalesReport/YesterdaySalesSummary&lt;/a&gt;&lt;/em&gt; will show the organization&amp;rsquo;s total performance, but adding &lt;strong&gt;?SalesPerson=Joe Smith&lt;/strong&gt; to the end will filter the data to only Joe. The real power to this trick is that &lt;strong&gt;the filter does not need to be visible on the dashboard, only present in the workbook filters&lt;/strong&gt;. Provided the reports are built with the desired filter in the data set, almost any report can be automatically personalized on distribution.&lt;/p&gt;
 
-&lt;p&gt;###Distributing personal reports&lt;/p&gt;
+&lt;h3 id=&#34;distributing-personal-reports:4be10db2518cc0389946805eeffeded2&#34;&gt;Distributing personal reports&lt;/h3&gt;
 
 &lt;p&gt;To make this work, three things are required: the base report to distribute, a table containing the filter clause and recipient email, and an email provider who plays well with Python (we use &lt;a href=&#34;https://sendgrid.com/&#34;&gt;SendGrid&lt;/a&gt; as they have a convenient library). In our job we&amp;rsquo;ve added additional controls to provide multiple scheduling options, choose on a recipient basis what attachments are included, and track the last successful distribution, but the base job is relatively straightforward (presume the reference table contains salesperson, region, and email):&lt;/p&gt;
 

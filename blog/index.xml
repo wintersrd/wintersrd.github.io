@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Robert Winters</title>
+      <title>Robert Danger Winters</title>
       <generator uri="https://hugo.spf13.com">Hugo</generator>
     <link>http://robertwinters.nl/blog/</link>
     <language>en-us</language>
     <author>Rob Winters</author>
-    <copyright>2015 Rob Winters</copyright>
-    <updated>Sat, 27 Jun 2015 00:00:00 UTC</updated>
+    <copyright>2016 Rob Winters</copyright>
+    <updated>Tue, 05 Apr 2016 00:00:00 UTC</updated>
+    
+    
+    <item>
+      <title>Architecting for Real-Time Big Data Analytics</title>
+      <link>http://robertwinters.nl/2016/04/big-data-conference-naarden/</link>
+      <pubDate>Tue, 05 Apr 2016 00:00:00 UTC</pubDate>
+      <author>Rob Winters</author>
+      <guid>http://robertwinters.nl/2016/04/big-data-conference-naarden/</guid>
+      <description>&lt;p&gt;I was recently invited to speak in Naarden on experiences with architecting a big data platform. These are the slides that I used to facilitate the talk.&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/LTnDLOmJIErDW&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/RobWinters1/architecting-for-realtime-big-data-analytics&#34; title=&#34;Architecting for Real-Time Big Data Analytics&#34; target=&#34;_blank&#34;&gt;Architecting for Real-Time Big Data Analytics&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a target=&#34;_blank&#34; href=&#34;//www.slideshare.net/RobWinters1&#34;&gt;Rob Winters&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
     
     
     <item>
@@ -16,7 +30,9 @@
       <pubDate>Sat, 27 Jun 2015 00:00:00 UTC</pubDate>
       <author>Rob Winters</author>
       <guid>http://robertwinters.nl/2015/06/2015-06-27-questions-to-ask-for-self-service-bi/</guid>
-      <description>&lt;p&gt;The BI industry is subject to a variety of debates currently, from &lt;a href=&#34;http://www.informationweek.com/big-data/big-data-analytics/hadoop-5-undeniable-truths/a/d-id/1316832&#34;&gt;whether or not Hadoop will replace the data warehouse&lt;/a&gt; to &lt;a href=&#34;http://www.rtinsights.com/iot-real-time-analytics-hype-cycle-vs-delivering-results/&#34;&gt;internet of things and real time analytics&lt;/a&gt;, but one of the topics that most directly impacts your business partners is much more simple: to what degree should a BI team build out a self-service infrastructure? According to some vendors, &lt;a href=&#34;http://www.cbronline.com/news/big-data/platforms/sap-bi-2015-top-5-take-aways-4603283&#34;&gt;self-service analytics are bullshit&lt;/a&gt;; according to others, &lt;a href=&#34;http://www.kdnuggets.com/2014/11/the-future-analytics-3-predictions-bi-2015.html&#34;&gt;self-service is the future of BI&lt;/a&gt;. Regardless of which camp you belong to, before moving down the path of self-service there are five questions you should ask yourself:&lt;/p&gt;
+      <description>
+
+&lt;p&gt;The BI industry is subject to a variety of debates currently, from &lt;a href=&#34;http://www.informationweek.com/big-data/big-data-analytics/hadoop-5-undeniable-truths/a/d-id/1316832&#34;&gt;whether or not Hadoop will replace the data warehouse&lt;/a&gt; to &lt;a href=&#34;http://www.rtinsights.com/iot-real-time-analytics-hype-cycle-vs-delivering-results/&#34;&gt;internet of things and real time analytics&lt;/a&gt;, but one of the topics that most directly impacts your business partners is much more simple: to what degree should a BI team build out a self-service infrastructure? According to some vendors, &lt;a href=&#34;http://www.cbronline.com/news/big-data/platforms/sap-bi-2015-top-5-take-aways-4603283&#34;&gt;self-service analytics are bullshit&lt;/a&gt;; according to others, &lt;a href=&#34;http://www.kdnuggets.com/2014/11/the-future-analytics-3-predictions-bi-2015.html&#34;&gt;self-service is the future of BI&lt;/a&gt;. Regardless of which camp you belong to, before moving down the path of self-service there are five questions you should ask yourself:&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;1. What business benefit do I hope to achieve?&lt;/strong&gt; Far and away, this is the most critical question to ask before moving forward. Self-service can afford an organization a variety of benefits: faster report development, better analytical capacity in other departments, more various views on the data to address related but different questions. Identifying and prioritizing the desired benefit(s) will be critical to moving towards a self-service organization.&lt;/p&gt;
 
@@ -28,7 +44,7 @@
 
 &lt;p&gt;&lt;strong&gt;5. How will I handle governance, quality control, and data security?&lt;/strong&gt; By exposing business users to underlying data and allowing them the freedom to create on their own, the risk increases exponentially that someone will see something they shouldn&amp;rsquo;t or a view will be created which is misleading and/or inaccurate. While this is nothing new (folks have been lying with Excel for years), it creates a new challenge because it is &amp;ldquo;in the reporting system&amp;rdquo;. Have a strategy to manage/identify &amp;ldquo;official&amp;rdquo; sources and reports, protect users from sharing confidential information, and ensure the quality of publicly available reporting within your environment.&lt;/p&gt;
 
-&lt;p&gt;Additional resources:&lt;/p&gt;
+&lt;h3 id=&#34;additional-resources:179c7176899eeb46f9cef02bee18b126&#34;&gt;Additional resources:&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Tableau:&lt;/strong&gt; &lt;a href=&#34;http://www.tableau.com/learn/whitepapers/deploying-flexible-self-service-analytics&#34;&gt;Deploying Flexible, Self-Service Analytics&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
@@ -73,23 +89,26 @@ It&amp;rsquo;s an interesting contrast from the usual approaches like A/B testin
       <pubDate>Mon, 22 Jun 2015 00:00:00 UTC</pubDate>
       <author>Rob Winters</author>
       <guid>http://robertwinters.nl/2015/06/2015-06-22-lod-calcs-in-tableau/</guid>
-      <description>&lt;p&gt;Just a quick one, we&amp;rsquo;ve been playing a lot with level of detail calculations lately in Tableau 9 and I have to say, they&amp;rsquo;re &lt;em&gt;incredible&lt;/em&gt;, especially when combined with context filtering. A few useful ones so far:&lt;/p&gt;
+      <description>
 
-&lt;p&gt;###Customer Lifetime Value
-Presuming you have a transactions table:&lt;/p&gt;
+&lt;p&gt;Just a quick one, we&amp;rsquo;ve been playing a lot with level of detail calculations lately in Tableau 9 and I have to say, they&amp;rsquo;re &lt;em&gt;incredible&lt;/em&gt;, especially when combined with context filtering. A few useful ones so far:&lt;/p&gt;
+
+&lt;h3 id=&#34;customer-lifetime-value:e4fd28e5a76e95e9da93c0c0b0a15752&#34;&gt;Customer Lifetime Value&lt;/h3&gt;
+
+&lt;p&gt;Presuming you have a transactions table:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;First transaction: {FIXED [customer_id] : min([transaction_date])}
 Tenure month: DATEDIFF(&#39;month&#39;,[First transaction], [transaction_date])
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;###RFM (Recency, Frequency, Lifetime Value) Modeling&lt;/p&gt;
+&lt;h3 id=&#34;rfm-recency-frequency-lifetime-value-modeling:e4fd28e5a76e95e9da93c0c0b0a15752&#34;&gt;RFM (Recency, Frequency, Lifetime Value) Modeling&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;Recency: DATEDIFF(&#39;month&#39;,{FIXED [customer_id] : max([transaction_date])})
 Frequency: {FIXED [customer_id] : countd([order_id])}
 Lifetime Value: {FIXED [customer_id] : sum([order_value])}
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;###Salesperson effectiveness (% index vs team average)&lt;/p&gt;
+&lt;h3 id=&#34;salesperson-effectiveness-index-vs-team-average:e4fd28e5a76e95e9da93c0c0b0a15752&#34;&gt;Salesperson effectiveness (% index vs team average)&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;Size of Team: {FIXED [team_id] : countd([account_mgr_name])}
 Team Revenues: {FIXED [team_id] : sum([order_value])}
@@ -108,9 +127,11 @@ Salesperson Index: sum([order_value])/avg([Team Revenues]/[Size of Team])
       <pubDate>Sun, 14 Jun 2015 00:00:00 UTC</pubDate>
       <author>Rob Winters</author>
       <guid>http://robertwinters.nl/2015/06/2015-06-14-experiences-redshift-vertica/</guid>
-      <description>&lt;p&gt;When it comes to conducting analysis on very large structured data sets, there are a limited number of viable players which won&amp;rsquo;t require a second mortgage and army of consultants to use (looking at you, Exadata). For the last several years my platform of choice has been HP Vertica: it&amp;rsquo;s fast, scales well, relatively easy to manage/performance tune, and is fairly middle of the pack for pricing. However, for the last several months I&amp;rsquo;ve been using Redshift as my primary data warehouse and feel ready to make a comparison on where the platforms materially differ.&lt;/p&gt;
+      <description>
 
-&lt;p&gt;###Data Loading: Structured flat files&lt;/p&gt;
+&lt;p&gt;When it comes to conducting analysis on very large structured data sets, there are a limited number of viable players which won&amp;rsquo;t require a second mortgage and army of consultants to use (looking at you, Exadata). For the last several years my platform of choice has been HP Vertica: it&amp;rsquo;s fast, scales well, relatively easy to manage/performance tune, and is fairly middle of the pack for pricing. However, for the last several months I&amp;rsquo;ve been using Redshift as my primary data warehouse and feel ready to make a comparison on where the platforms materially differ.&lt;/p&gt;
+
+&lt;h3 id=&#34;data-loading-structured-flat-files:8290a9e3b177c64d60b0e5b27f06bd31&#34;&gt;Data Loading: Structured flat files&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Vertica&lt;/strong&gt;: Vertica&amp;rsquo;s standard loading paradigm is to load the file via a local copy command and loads into memory. This creates a potentially volatile loading pattern (dependent on network performance) but is extremely fast a parallelizes well if the machine executing the copy statement is in the same network. When running loading jobs like &amp;ldquo;copy all tables from a production DB&amp;rdquo; or &amp;ldquo;I need ad hoc data in the DB for analysis&amp;rdquo;, Vertica was significantly faster/easier than Redshift.&lt;/p&gt;&lt;/li&gt;
@@ -118,7 +139,7 @@ Salesperson Index: sum([order_value])/avg([Team Revenues]/[Size of Team])
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Redshift&lt;/strong&gt;: Refshift can load from S3, EMR, or DynamoDB (it can also load from another machine via SSH, but the mechanism to do so is enormously cumbersome). Since it is lacking in any COPY FROM LOCAL functionality, loading data from a local source is both more cumbersome and much slower. However, loading data from Hadoop (presuming it&amp;rsquo;s an EMR cluster) is much better in Redshift.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;###Time and Time Series&lt;/p&gt;
+&lt;h3 id=&#34;time-and-time-series:8290a9e3b177c64d60b0e5b27f06bd31&#34;&gt;Time and Time Series&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Redshift&lt;/strong&gt;: Time series analysis is where Redshift falls flat; the database is lacking certain basic functions like _TO&lt;em&gt;TIMESTAMP&lt;/em&gt;&amp;hellip; god help you if you need to work with Unix epochs. Most basic date functions are represented (ex. &lt;em&gt;DATEDIFF&lt;/em&gt;, &lt;em&gt;DATETRUNC&lt;/em&gt;) but there are very few analytical or window functions available.&lt;/p&gt;&lt;/li&gt;
@@ -126,7 +147,7 @@ Salesperson Index: sum([order_value])/avg([Team Revenues]/[Size of Team])
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Vertica&lt;/strong&gt;: In contrast, Vertica has an enormous number of date functions available to assist in analysis of event stream data (although not all functions are implemented in ISO/ANSI standards). Additionally, it&amp;rsquo;s possible to do advanced time analytics in raw SQL. For example, sessionization of an event stream can be done using conditional true events.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;###JSON Handling&lt;/p&gt;
+&lt;h3 id=&#34;json-handling:8290a9e3b177c64d60b0e5b27f06bd31&#34;&gt;JSON Handling&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Redshift&lt;/strong&gt;: Redshift allows direct loading of JSON objects to tables and will map each key to the appropriate column during loading. This solution works well when the arrays are consistently defined as it will offer high performance on read but is a liability if new keys are constantly being added to your arrays - those new records will be ignored until the column is added to the table. Redshift also has excellent support for querying JSON objects stored in strings.&lt;/p&gt;&lt;/li&gt;
@@ -134,7 +155,7 @@ Salesperson Index: sum([order_value])/avg([Team Revenues]/[Size of Team])
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Vertica&lt;/strong&gt;: In contrast, Vertica stores the JSON object as written in a Flex Table, preserving the whole record and using a view to allow access via SQL to the array. The DBA can choose which (if any) columns should be materialized as database columns; this approach is more complicated from an end-user perspective but ensures that data is never lost. Vertica also does not support querying JSON strings directly except by abusing functions developed for use on Flex tables.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;###Physical Structure Management&lt;/p&gt;
+&lt;h3 id=&#34;physical-structure-management:8290a9e3b177c64d60b0e5b27f06bd31&#34;&gt;Physical Structure Management&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Vertica&lt;/strong&gt;: The reason that column stores are so performant is the physical sorting and partitioning of the data by column; like indices, tuning for performance is a long term process and may require many iterations. Vertica allows multiple sort and compression designs for each table, allowing one to optimize for a variety of queries at the cost of load performance. Additionally, changes can be executed on the fly without impacting end users or dropping tables.&lt;/p&gt;&lt;/li&gt;
@@ -142,7 +163,7 @@ Salesperson Index: sum([order_value])/avg([Team Revenues]/[Size of Team])
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Redshift&lt;/strong&gt;: Redshift allows the same level of sorting/node distribution logic, but each table can only have one physical manifestation. Additionally, changes to the physical structure require the table to be dropped and recreated. This significantly slows down the DBA&amp;rsquo;s work on performance tuning.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;###Conclusion&lt;/p&gt;
+&lt;h3 id=&#34;conclusion:8290a9e3b177c64d60b0e5b27f06bd31&#34;&gt;Conclusion&lt;/h3&gt;
 
 &lt;p&gt;So, which one is &amp;ldquo;better&amp;rdquo;? Objectively, neither - both platforms bring strengths and weaknesses to the table. I would argue that Vertica has a more mature functionality set and is easier/more flexible to work in, with the downsides of higher cost and more administrative work required.&lt;/p&gt;
 </description>
@@ -156,9 +177,11 @@ Salesperson Index: sum([order_value])/avg([Team Revenues]/[Size of Team])
       <pubDate>Tue, 02 Jun 2015 00:00:00 UTC</pubDate>
       <author>Rob Winters</author>
       <guid>http://robertwinters.nl/2015/06/2015-06-02-personal-tableau-push-reporting/</guid>
-      <description>&lt;p&gt;Tableau is one of my favorite Business Intelligence platforms: it achieves an excellent balance of flexibility and control and allows users to explore the data and create new insights. However, the pricing can be prohibitively expensive for small companies ($1k per user up front, $200 per year afterwards) and not all members of the organization require the full interactor experience: some people just want to see what happened yesterday, last week, or last month. As a result, many companies start with just a limited use PoC and miss a great opportunity to get the organization used to looking at the numbers. At TravelBird we&amp;rsquo;ve built a Python script to allow everyone in the company (even those without Tableau licenses) to receive a personalized report every day.&lt;/p&gt;
+      <description>
 
-&lt;p&gt;###The key: tabcmd and URL filters&lt;/p&gt;
+&lt;p&gt;Tableau is one of my favorite Business Intelligence platforms: it achieves an excellent balance of flexibility and control and allows users to explore the data and create new insights. However, the pricing can be prohibitively expensive for small companies ($1k per user up front, $200 per year afterwards) and not all members of the organization require the full interactor experience: some people just want to see what happened yesterday, last week, or last month. As a result, many companies start with just a limited use PoC and miss a great opportunity to get the organization used to looking at the numbers. At TravelBird we&amp;rsquo;ve built a Python script to allow everyone in the company (even those without Tableau licenses) to receive a personalized report every day.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-key-tabcmd-and-url-filters:4be10db2518cc0389946805eeffeded2&#34;&gt;The key: tabcmd and URL filters&lt;/h3&gt;
 
 &lt;p&gt;One of the most powerful Tableau tools available to a BI Manager who wants to share data is tabcmd, which allows incredible functionality to generate images, export PDFs and data, and manage a number of other tasks on the server. For example, if we imagine our server is &lt;em&gt;&lt;a href=&#34;https://reporting.MyCompany.com&#34;&gt;https://reporting.MyCompany.com&lt;/a&gt;&lt;/em&gt;, the workbook is &lt;em&gt;Daily Sales Report&lt;/em&gt;, and the default view is &lt;em&gt;Yesterday Sales Summary&lt;/em&gt;, then to generate a PNG summary, PDF report, and the underlying data we could execute:&lt;/p&gt;
 
@@ -171,7 +194,7 @@ tabcmd logout
 
 &lt;p&gt;As imaginable, this could all be compiled into an email using a tool like &lt;a href=&#34;http://www.blat.net/&#34;&gt;Blat&lt;/a&gt; and distributed to a group. However, the trick to personal emails are Tableau&amp;rsquo;s URL filters, which can be used both on the web and with tabcmd. For example, using &lt;em&gt;&lt;a href=&#34;https://reporting.mycompany.com/#/DailySalesReport/YesterdaySalesSummary&#34;&gt;https://reporting.mycompany.com/#/DailySalesReport/YesterdaySalesSummary&lt;/a&gt;&lt;/em&gt; will show the organization&amp;rsquo;s total performance, but adding &lt;strong&gt;?SalesPerson=Joe Smith&lt;/strong&gt; to the end will filter the data to only Joe. The real power to this trick is that &lt;strong&gt;the filter does not need to be visible on the dashboard, only present in the workbook filters&lt;/strong&gt;. Provided the reports are built with the desired filter in the data set, almost any report can be automatically personalized on distribution.&lt;/p&gt;
 
-&lt;p&gt;###Distributing personal reports&lt;/p&gt;
+&lt;h3 id=&#34;distributing-personal-reports:4be10db2518cc0389946805eeffeded2&#34;&gt;Distributing personal reports&lt;/h3&gt;
 
 &lt;p&gt;To make this work, three things are required: the base report to distribute, a table containing the filter clause and recipient email, and an email provider who plays well with Python (we use &lt;a href=&#34;https://sendgrid.com/&#34;&gt;SendGrid&lt;/a&gt; as they have a convenient library). In our job we&amp;rsquo;ve added additional controls to provide multiple scheduling options, choose on a recipient basis what attachments are included, and track the last successful distribution, but the base job is relatively straightforward (presume the reference table contains salesperson, region, and email):&lt;/p&gt;
 
@@ -285,7 +308,7 @@ if __name__ == &#39;__main__&#39;:
 
 &lt;h3 id=&#34;engine-workflow:133b05d48047fcbc0514da03bd26193c&#34;&gt;Engine workflow&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;{{site.url}}/assets/DV_Automation.png&#34; alt=&#34;High level data vault workflow model&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;{{site.URL}}/static/DV_Automation.png&#34; alt=&#34;High level data vault workflow model&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
