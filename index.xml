@@ -37,99 +37,6 @@
     
     
     <item>
-      <title>Critical considerations in BI landscape</title>
-      <link>http://robertwinters.nl/2015/11/critical-considerations-bi/</link>
-      <pubDate>Sat, 21 Nov 2015 00:00:00 UTC</pubDate>
-      <author>Rob Winters</author>
-      <guid>http://robertwinters.nl/2015/11/critical-considerations-bi/</guid>
-      <description>
-
-&lt;h2 id=&#34;solution-providers-see-gartner-bi-quadrant-for-full-vendor-overview:3fd468afb77d931ebc9fef598cbd01dc&#34;&gt;Solution providers (See Gartner BI Quadrant for full vendor overview):&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Traditional BI:&lt;/strong&gt; &lt;a href=&#34;https://powerbi.microsoft.com&#34;&gt;Microsoft&lt;/a&gt;, &lt;a href=&#34;http://www.ibm.com/software/analytics/cognos/&#34;&gt;Cognos&lt;/a&gt;, &lt;a href=&#34;http://www.microstrategy.com&#34;&gt;Microstrategy&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Visual Exploration:&lt;/strong&gt; &lt;a href=&#34;https://www.tableau.com/&#34;&gt;Tableau&lt;/a&gt;, &lt;a href=&#34;www.qlik.com/products/qlik-sense&#34;&gt;Qlik Sense&lt;/a&gt;, &lt;a href=&#34;http://spotfire.tibco.com&#34;&gt;Tibco Spotfire&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Deep data analysis:&lt;/strong&gt; &lt;a href=&#34;http://www.looker.com&#34;&gt;Looker&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Roll your own:&lt;/strong&gt; &lt;a href=&#34;http://shiny.rstudio.com&#34;&gt;Shiny&lt;/a&gt;, &lt;a href=&#34;http://d3js.org&#34;&gt;D3&lt;/a&gt;, &lt;a href=&#34;http://ipython.org&#34;&gt;Python&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The problem space that most organizations are facing leans towards Visual Exploration above traditional BI. There are many open source intiatives which are also seeing huge development, for example &lt;a href=&#34;http://nerds.airbnb.com/airpal/&#34;&gt;Airpal&lt;/a&gt; by AirBnB.&lt;/p&gt;
-
-&lt;h2 id=&#34;traditional-bi-flow:3fd468afb77d931ebc9fef598cbd01dc&#34;&gt;Traditional BI flow:&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;ETL-&amp;gt;Pre-aggregate to cubes-&amp;gt;Present (mostly) static reports&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;a-more-modern-approach:3fd468afb77d931ebc9fef598cbd01dc&#34;&gt;A more modern approach:&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;ELT-&amp;gt;Direct query against cleaned event tables&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Benefits:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;(Near) real time flow&lt;/li&gt;
-&lt;li&gt;Allows rapid iteration against the data / data definitions&lt;/li&gt;
-&lt;li&gt;Lower maintenance (fewer cubes)&lt;/li&gt;
-&lt;li&gt;Deep analysis on reporting data&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Costs:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Storage must be highly performant due to lack of aggregations&lt;/li&gt;
-&lt;li&gt;Can be more complex for end users due to higher dimensionality&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;challenges-bi-faces-today:3fd468afb77d931ebc9fef598cbd01dc&#34;&gt;Challenges BI faces today:&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Rapidly changing schemas in unstructured/semi-structured data&lt;/li&gt;
-&lt;li&gt;Merging of small and big data for your reporting; most platforms work well for one or the other&lt;/li&gt;
-&lt;li&gt;Achieving scalability of your BI team as more and more employees consume data in a high interactivity manner&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;emergent-paradigms-driving-design-consideration:3fd468afb77d931ebc9fef598cbd01dc&#34;&gt;Emergent paradigms driving design consideration:&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Self-service is a must due to employee expectations&lt;/li&gt;
-&lt;li&gt;Mobile is rapidly becoming significant&lt;/li&gt;
-&lt;li&gt;Cycle time for reporting is reducing due to success in agile development&lt;/li&gt;
-&lt;li&gt;Analytics becoming more important relative to reporting&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;common-solutions-to-support-these-paradigms:3fd468afb77d931ebc9fef598cbd01dc&#34;&gt;Common solutions to support these paradigms:&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Structured/cleaned event bus backing reporting&lt;/li&gt;
-&lt;li&gt;Real time aggregations using (for example) Apache Spark&lt;/li&gt;
-&lt;li&gt;Lambda architecture data models to support reporting&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;best-practices:3fd468afb77d931ebc9fef598cbd01dc&#34;&gt;Best practices:&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Isolate financial big data reporting and operational&lt;/li&gt;
-&lt;li&gt;&amp;lt;5 seconds for report to load&lt;/li&gt;
-&lt;li&gt;Put data management in your BI team&amp;rsquo;s hands, report development embedded in your ops teams&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;references:3fd468afb77d931ebc9fef598cbd01dc&#34;&gt;References:&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/RobWinters1/design-principles-for-a-modern-data-warehouse&#34;&gt;Design Principles for a Modern Data Warehouse Environment&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/SparkSummit/07-blagoy-kaloferov&#34;&gt;Spark based data warehousing at Edmunds.com&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.tableau.com/drive&#34;&gt;Agile BI rollout via Tableau&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://nerds.airbnb.com/scaling-data-science/&#34;&gt;Scaling Data Science at AirBnB&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    
-    
-    <item>
       <title>The Role of Self-Service in your Business Intelligence Strategy</title>
       <link>http://robertwinters.nl/2015/06/2015-06-27-questions-to-ask-for-self-service-bi/</link>
       <pubDate>Sat, 27 Jun 2015 00:00:00 UTC</pubDate>
@@ -734,6 +641,8 @@ next post I&amp;rsquo;ll discuss implementation of Snowplow, an open source even
       <description>&lt;p&gt;I recently decided to start blogging on all things BI including dashboarding, technology, data science, etc.&lt;/p&gt;
 </description>
     </item>
+    
+    
     
     
   </channel>
