@@ -18,6 +18,11 @@
   </url>
   
   <url>
+    <loc>http://robertwinters.nl/2015/11/critical-considerations-bi/</loc>
+    <lastmod>2015-11-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://robertwinters.nl/2015/06/2015-06-27-questions-to-ask-for-self-service-bi/</loc>
     <lastmod>2015-06-27T00:00:00+00:00</lastmod>
   </url>
@@ -80,6 +85,10 @@
   <url>
     <loc>http://robertwinters.nl/about/</loc>
     <lastmod>2014-07-28T11:14:25+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://robertwinters.nl/cv/</loc>
   </url>
   
 </urlset>

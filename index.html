@@ -67,9 +67,9 @@
       
         <li><a href="/about/">About </a></li>
       
+        <li><a href="/cv/">CV </a></li>
+      
       <a href="http://www.slideshare.net/RobWinters" target="_blank"> My Slideshare</a>
-      <br/>
-      <a href="https://www.dropbox.com/s/0t3o2xg04ccc81r/Robert%20Winters.pdf" target="_blank">My CV</a>
       <br/>
       
     </ul>
@@ -124,6 +124,71 @@
 
 
     <p>AWS did a really nice write-up on what my team has been working on, published <a href="https://aws.amazon.com/solutions/case-studies/travelbird/">here</a>.</p>
+
+  </div>
+  
+  
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://robertwinters.nl/2015/11/critical-considerations-bi/">
+        Critical considerations in BI landscape
+      </a>
+    </h1>
+
+    <span class="post-date">Nov 21, 2015</span>
+
+    
+
+
+    <p>Solution providers (See Gartner BI Quadrant for full vendor overview):
+    - Traditional BI: Microsoft, Cognos, Microstrategy
+    - Visual Exploration: Tableau, Qlik Sense, Tibco Spotfire
+    - Deep data analysis: Looker
+    - Roll your own: Shiny, D3, Python</p>
+
+<p>The problem space that most organizations are facing leans towards Visual Exploration above traditional BI</p>
+
+<p>Traditional BI flow:
+    - ETL-&gt;Pre-aggregate to cubes-&gt;Present (mostly) static reports
+A more modern approach:
+    -ELT-&gt;Direct query against cleaned event tables
+    Benefits:
+        - (Near) real time flow
+        - Allows rapid iteration against the data / data definitions
+        - Rower maintenance (fewer cubes)
+        - Deep analysis on reporting data
+    Costs:
+        - Storage must be highly performant due to lack of aggregations
+        - Can be more complex for end users due to higher dimensionality</p>
+
+<p>Challenges BI faces today:
+    - Rapidly changing schemas in unstructured/semi-structured data
+    - Merging of small and big data for your reporting; most platforms work well for one or the other
+    - Achieving scalability of your BI team as more and more employees consume data in a high interactivity manner</p>
+
+<p>Emergent paradigms driving design consideration:
+    - Self-service is a must due to employee expectations
+    - Mobile is rapidly becoming significant
+    - Cycle time for reporting is reducing due to success in agile development
+    - Analytics becoming more important relative to reporting</p>
+
+<p>Common solutions to support these paradigms:
+    - Structured/cleaned event bus backing reporting
+    - Real time aggregations using (for example) Apache Spark
+    - Lambda architecture data models to support reporting</p>
+
+<p>Best practices:
+    - Isolate financial big data reporting and operational
+    - &lt;5 seconds for report to load
+    - Put data management in your BI team&rsquo;s hands, report development embedded in your ops teams</p>
+
+<p>References:
+Design Principles for a Modern Data Warehouse Environment
+Spark based data warehousing at Edmunds.com
+Agile BI rollout via Tableau
+Scaling Data Science at AirBnB
+Ranking BI Solutions by Implementation Costs</p>
 
   </div>
   
@@ -806,6 +871,8 @@ next post I&rsquo;ll discuss implementation of Snowplow, an open source event tr
     <p>I recently decided to start blogging on all things BI including dashboarding, technology, data science, etc.</p>
 
   </div>
+  
+  
   
   
   

@@ -37,6 +37,65 @@
     
     
     <item>
+      <title>Critical considerations in BI landscape</title>
+      <link>http://robertwinters.nl/2015/11/critical-considerations-bi/</link>
+      <pubDate>Sat, 21 Nov 2015 00:00:00 UTC</pubDate>
+      <author>Rob Winters</author>
+      <guid>http://robertwinters.nl/2015/11/critical-considerations-bi/</guid>
+      <description>&lt;p&gt;Solution providers (See Gartner BI Quadrant for full vendor overview):
+    - Traditional BI: Microsoft, Cognos, Microstrategy
+    - Visual Exploration: Tableau, Qlik Sense, Tibco Spotfire
+    - Deep data analysis: Looker
+    - Roll your own: Shiny, D3, Python&lt;/p&gt;
+
+&lt;p&gt;The problem space that most organizations are facing leans towards Visual Exploration above traditional BI&lt;/p&gt;
+
+&lt;p&gt;Traditional BI flow:
+    - ETL-&amp;gt;Pre-aggregate to cubes-&amp;gt;Present (mostly) static reports
+A more modern approach:
+    -ELT-&amp;gt;Direct query against cleaned event tables
+    Benefits:
+        - (Near) real time flow
+        - Allows rapid iteration against the data / data definitions
+        - Rower maintenance (fewer cubes)
+        - Deep analysis on reporting data
+    Costs:
+        - Storage must be highly performant due to lack of aggregations
+        - Can be more complex for end users due to higher dimensionality&lt;/p&gt;
+
+&lt;p&gt;Challenges BI faces today:
+    - Rapidly changing schemas in unstructured/semi-structured data
+    - Merging of small and big data for your reporting; most platforms work well for one or the other
+    - Achieving scalability of your BI team as more and more employees consume data in a high interactivity manner&lt;/p&gt;
+
+&lt;p&gt;Emergent paradigms driving design consideration:
+    - Self-service is a must due to employee expectations
+    - Mobile is rapidly becoming significant
+    - Cycle time for reporting is reducing due to success in agile development
+    - Analytics becoming more important relative to reporting&lt;/p&gt;
+
+&lt;p&gt;Common solutions to support these paradigms:
+    - Structured/cleaned event bus backing reporting
+    - Real time aggregations using (for example) Apache Spark
+    - Lambda architecture data models to support reporting&lt;/p&gt;
+
+&lt;p&gt;Best practices:
+    - Isolate financial big data reporting and operational
+    - &amp;lt;5 seconds for report to load
+    - Put data management in your BI team&amp;rsquo;s hands, report development embedded in your ops teams&lt;/p&gt;
+
+&lt;p&gt;References:
+Design Principles for a Modern Data Warehouse Environment
+Spark based data warehousing at Edmunds.com
+Agile BI rollout via Tableau
+Scaling Data Science at AirBnB
+Ranking BI Solutions by Implementation Costs&lt;/p&gt;
+</description>
+    </item>
+    
+    
+    
+    <item>
       <title>The Role of Self-Service in your Business Intelligence Strategy</title>
       <link>http://robertwinters.nl/2015/06/2015-06-27-questions-to-ask-for-self-service-bi/</link>
       <pubDate>Sat, 27 Jun 2015 00:00:00 UTC</pubDate>
