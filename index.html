@@ -79,7 +79,7 @@
       <a href="https://github.com/wintersrd"><i class="fa fa-github-square"></i></a>&nbsp;&nbsp;
       
 
-    <p class="footnote">powered by <a href="http://hugo.spf13.com">Hugo</a> <br/>
+    <p class="footnote">powered by <a href="http://hugo.spf13.com" target="_blank">Hugo</a> <br/>
     &copy; 2016 Rob Winters. All rights reserved.</p>
     
   </div>
@@ -141,54 +141,88 @@
     
 
 
-    <p>Solution providers (See Gartner BI Quadrant for full vendor overview):
-    - Traditional BI: Microsoft, Cognos, Microstrategy
-    - Visual Exploration: Tableau, Qlik Sense, Tibco Spotfire
-    - Deep data analysis: Looker
-    - Roll your own: Shiny, D3, Python</p>
+    
 
-<p>The problem space that most organizations are facing leans towards Visual Exploration above traditional BI</p>
+<h2 id="solution-providers-see-gartner-bi-quadrant-for-full-vendor-overview:3fd468afb77d931ebc9fef598cbd01dc">Solution providers (See Gartner BI Quadrant for full vendor overview):</h2>
 
-<p>Traditional BI flow:
-    - ETL-&gt;Pre-aggregate to cubes-&gt;Present (mostly) static reports
-A more modern approach:
-    -ELT-&gt;Direct query against cleaned event tables
-    Benefits:
-        - (Near) real time flow
-        - Allows rapid iteration against the data / data definitions
-        - Rower maintenance (fewer cubes)
-        - Deep analysis on reporting data
-    Costs:
-        - Storage must be highly performant due to lack of aggregations
-        - Can be more complex for end users due to higher dimensionality</p>
+<ul>
+<li><strong>Traditional BI:</strong> <a href="https://powerbi.microsoft.com">Microsoft</a>, <a href="http://www.ibm.com/software/analytics/cognos/">Cognos</a>, <a href="http://www.microstrategy.com">Microstrategy</a></li>
+<li><strong>Visual Exploration:</strong> <a href="https://www.tableau.com/">Tableau</a>, <a href="www.qlik.com/products/qlik-sense">Qlik Sense</a>, <a href="http://spotfire.tibco.com">Tibco Spotfire</a></li>
+<li><strong>Deep data analysis:</strong> <a href="http://www.looker.com">Looker</a></li>
+<li><strong>Roll your own:</strong> <a href="http://shiny.rstudio.com">Shiny</a>, <a href="http://d3js.org">D3</a>, <a href="http://ipython.org">Python</a></li>
+</ul>
 
-<p>Challenges BI faces today:
-    - Rapidly changing schemas in unstructured/semi-structured data
-    - Merging of small and big data for your reporting; most platforms work well for one or the other
-    - Achieving scalability of your BI team as more and more employees consume data in a high interactivity manner</p>
+<p>The problem space that most organizations are facing leans towards Visual Exploration above traditional BI. There are many open source intiatives which are also seeing huge development, for example <a href="http://nerds.airbnb.com/airpal/">Airpal</a> by AirBnB.</p>
 
-<p>Emergent paradigms driving design consideration:
-    - Self-service is a must due to employee expectations
-    - Mobile is rapidly becoming significant
-    - Cycle time for reporting is reducing due to success in agile development
-    - Analytics becoming more important relative to reporting</p>
+<h2 id="traditional-bi-flow:3fd468afb77d931ebc9fef598cbd01dc">Traditional BI flow:</h2>
 
-<p>Common solutions to support these paradigms:
-    - Structured/cleaned event bus backing reporting
-    - Real time aggregations using (for example) Apache Spark
-    - Lambda architecture data models to support reporting</p>
+<ul>
+<li>ETL-&gt;Pre-aggregate to cubes-&gt;Present (mostly) static reports</li>
+</ul>
 
-<p>Best practices:
-    - Isolate financial big data reporting and operational
-    - &lt;5 seconds for report to load
-    - Put data management in your BI team&rsquo;s hands, report development embedded in your ops teams</p>
+<h2 id="a-more-modern-approach:3fd468afb77d931ebc9fef598cbd01dc">A more modern approach:</h2>
 
-<p>References:
-Design Principles for a Modern Data Warehouse Environment
-Spark based data warehousing at Edmunds.com
-Agile BI rollout via Tableau
-Scaling Data Science at AirBnB
-Ranking BI Solutions by Implementation Costs</p>
+<ul>
+<li>ELT-&gt;Direct query against cleaned event tables</li>
+</ul>
+
+<p><strong>Benefits:</strong></p>
+
+<ul>
+<li>(Near) real time flow</li>
+<li>Allows rapid iteration against the data / data definitions</li>
+<li>Lower maintenance (fewer cubes)</li>
+<li>Deep analysis on reporting data</li>
+</ul>
+
+<p><strong>Costs:</strong></p>
+
+<ul>
+<li>Storage must be highly performant due to lack of aggregations</li>
+<li>Can be more complex for end users due to higher dimensionality</li>
+</ul>
+
+<h2 id="challenges-bi-faces-today:3fd468afb77d931ebc9fef598cbd01dc">Challenges BI faces today:</h2>
+
+<ul>
+<li>Rapidly changing schemas in unstructured/semi-structured data</li>
+<li>Merging of small and big data for your reporting; most platforms work well for one or the other</li>
+<li>Achieving scalability of your BI team as more and more employees consume data in a high interactivity manner</li>
+</ul>
+
+<h2 id="emergent-paradigms-driving-design-consideration:3fd468afb77d931ebc9fef598cbd01dc">Emergent paradigms driving design consideration:</h2>
+
+<ul>
+<li>Self-service is a must due to employee expectations</li>
+<li>Mobile is rapidly becoming significant</li>
+<li>Cycle time for reporting is reducing due to success in agile development</li>
+<li>Analytics becoming more important relative to reporting</li>
+</ul>
+
+<h2 id="common-solutions-to-support-these-paradigms:3fd468afb77d931ebc9fef598cbd01dc">Common solutions to support these paradigms:</h2>
+
+<ul>
+<li>Structured/cleaned event bus backing reporting</li>
+<li>Real time aggregations using (for example) Apache Spark</li>
+<li>Lambda architecture data models to support reporting</li>
+</ul>
+
+<h2 id="best-practices:3fd468afb77d931ebc9fef598cbd01dc">Best practices:</h2>
+
+<ul>
+<li>Isolate financial big data reporting and operational</li>
+<li>&lt;5 seconds for report to load</li>
+<li>Put data management in your BI team&rsquo;s hands, report development embedded in your ops teams</li>
+</ul>
+
+<h2 id="references:3fd468afb77d931ebc9fef598cbd01dc">References:</h2>
+
+<ul>
+<li><a href="http://www.slideshare.net/RobWinters1/design-principles-for-a-modern-data-warehouse">Design Principles for a Modern Data Warehouse Environment</a></li>
+<li><a href="http://www.slideshare.net/SparkSummit/07-blagoy-kaloferov">Spark based data warehousing at Edmunds.com</a></li>
+<li><a href="http://www.tableau.com/drive">Agile BI rollout via Tableau</a></li>
+<li><a href="http://nerds.airbnb.com/scaling-data-science/">Scaling Data Science at AirBnB</a></li>
+</ul>
 
   </div>
   

@@ -50,12 +50,14 @@ pre {
 }
 
 
-.post h1 {color: #300030;
+.post h1 {color: #033649;
 font-size: 2em;
 }
 
 
-
+a {
+  color: #6F072E;
+}
 /*
  * Sidebar
  *
@@ -67,7 +69,7 @@ font-size: 2em;
   text-align: center;
   padding: 2rem 1rem;
   color: rgba(255,255,255,.5);
-  background-color: #300030;
+  background-color: #033649;
 }
 @media (min-width: 48em) {
   .sidebar {
@@ -139,6 +141,7 @@ a.sidebar-nav-item:focus {
  */
 
 .content {
+
   padding-top:    2rem;
   padding-bottom: 2rem;
 }
@@ -165,7 +168,7 @@ a.sidebar-nav-item:focus {
 }
 
 .go {
-  color: #444444;
+  color: #033649;
 }
 
 .badge {
@@ -344,18 +347,15 @@ a.sidebar-nav-item:focus {
   width: 65%;
 }
 
-.cv h1 {color: #300030;
+.cv h1 {color: #033649;
   font-size: 3em;
   line-height: 1em;
   position: relative;
   text-align: center;
   margin-left: 25%;
-  /* padding: .1rem 1rem; */
-  text-shadow: 1px 1px #fff,
-                1px 2px #ccc;
               }
 .cv h1+p {/*subtitle*/
-  color: #1D49A0;
+  color: #036564;
   font-style: italic;
   font-size: 110%;
   position: relative;
@@ -368,7 +368,7 @@ a.sidebar-nav-item:focus {
 .cv h2 {
     font-size: 1.1em;
   /* color: #a00; */
-  color: #1D49A0;
+  color: #036564;
   margin-top: 2em;
   position: relative;
   top: 1.4em;
@@ -377,7 +377,7 @@ a.sidebar-nav-item:focus {
 }
 
 .cv h3 {
-  color: #F07415;
+  color: #033649;
   font-size: 1em;
   line-height: 2em;
   position: relative;
@@ -406,10 +406,11 @@ a.sidebar-nav-item:focus {
 }
 
 .cv code {
-  font: normal normal;
-  font-size: 80%;
+  font: bold bold;
+  font-size: 85%;
   font-family: "Garamond", monospace, sans-serif;
-  color: #aaa;
+  background-color: #ffffff;
+  color: #033649;
 }
 
 .cv p code {
