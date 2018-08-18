@@ -12,12 +12,19 @@ Below is a short set of guidelines and best practices I wrote for TravelBird on 
 ## Values-Based Leadership
 
 ### Introduction
+
 Company values are an interesting thing. Regardless of whether or not we choose to define them, they exist; and if we /do/ define them, the values we exhibit deviate from what we’ve written down. José Ortega y Gasset once said, “Tell me what you pay attention to and I will tell you who you are.” When we reflect on our own organization and teams, it becomes readily apparent that there can be a difference between what we say is important and what we focus on.
+
 The modern company’s focus on metrics and measurement stems from Frederick Taylor’s work on manufacturing scientific management, and is as prevalent today as it was in 1911. Consider the how little we have advanced: to drive better performance from factory workers, he quantified every aspect of their work and pushed on each metric every day until workers fell behind. How is this any different from our focus on revenue, pushing our targets up month by month and expecting higher achievement?
+
 The idea behind values-based leadership is actually older than Taylor’s model and stems from Aristotelian theories of leadership. If metrics-based management is focusing on the /what/ and /when/, values-based leadership is focusing on the /why/ and /how/. In other words, if we orient our leadership around acting in the right manner, results will follow as a natural outcome. Interestingly, this has been proven through multiple studies that teams which act from a clear, strong, aligned culture are higher performing, more satisfied, and more committed than the average company.
+
 ## What is values-based leadership?
+
 The idea behind values-based leadership is simple. From a codified set of values (our stated ethos) and purpose, we measure our management and success against our progress of realizing those values in pursuit of our company mission. This does /not/ mean that we do not measure normal KPIs, but rather that we prioritize our decision process and define our interactions based on those values with the expectation that KPIs will be achieved as a result of our peoples’ commitment to achievement and clarity of expectations. This shift is translated to our teams by how we interact with them, the behaviors we role model, and what we coach and measure them on.
+
 ## Coaching and Development
+
 One of the best ways for leaders to translate the values to their teams is via coaching and 1:1s. Generally speaking, what topics we choose to discuss in conversation with our teams will tell them what matters to us and what they are measured on. Each of the values can be translated directly into coaching topics, questions to ask during the 1:1, and continuous spot feedback to the employee. Additionally, the amount of emphasis we put on development during our 1:1s will directly translate into how much people grow. While the employee is responsible for driving their own growth, it is our responsibility as leaders to create opportunities for them to develop, support them during that process, and reward them for their progress. Best practices in coaching include:
 * Make behavioral and value-based conversations the primary focus of your 1:1s. When discussing ongoing work, frame it in ways that emphasize and explore the behaviors rather than the outcomes.
 * Every person has their own plans for what they want in their career, but only a handful document them in a formal Personal Development Plan (PDP). Use 1:1s to understand the individual’s ambitions and help guide them in finding ways to achieve that ambition by finding books, recommending courses, sharing personal experiences, connecting them with more experienced people, etc. Our responsibility as managers is to help them grow at the rate which they desire, and to lend our experience into making it as efficient as possible.
@@ -25,9 +32,13 @@ One of the best ways for leaders to translate the values to their teams is via c
 * Encourage peer coaching and distribute the responsibility throughout the team. If you have someone who is expert in a topic, ask them to be the one who supports the whole team’s development.
 * Have for yourself a clearly defined leadership ethos and principles which you hold yourself to. Regularly engage in self-reflection regarding your performance, strengths and weaknesses, and how your style needs to grow to serve your current team. Continuously be seeking to enhance your own approach and seek feedback from your team.
 * Set the example with regards to personal development to highlight its importance. You should practice /kaizen/, the art of continuously creating small improvement. Have your own development plan and be open in sharing what you are working on with your team.
+
 ---
+
+
 ## Team Leadership
 As a leader, it is your responsibility to cultivate an environment of excellence and make the values come to life. Note that this is more complex than saying, “you’re being a great adventurer!” and requires active investment by you in your team’s atmosphere. Every action you take and every interaction you have can either lead your team one step closer towards greatness or one further away. Below is a list of different practices, ideas, and behaviors that you as a leader could pursue in order to create the type of environment that TravelBird aspires to.
+
 #### Adventurer
 If we are going to achieve maximum growth, it will come from our company innovating, not from the optimization of existing products and processes. To that end, it is critical that every person of the company is engaged in controlled discovery of new opportunities and finding the next big improvement. Some ways to create an adventurous atmosphere:
 * Continuously probe your team to think about opportunities to improve either the team or the company. Challenge them to look for ways to work differently or new ideas to test.
@@ -35,6 +46,7 @@ If we are going to achieve maximum growth, it will come from our company innovat
 * Create “mini-hackathons” within the team to try to solve problems within your problem space. Dedicate half a day to an opportunity or problem and ask everyone to come up with their own solutions to it.
 * Focus on achieving excellence rather than avoiding mistakes (these are not the same thing). It is better to hit 105% of potential with a 10% error rate than 60% of potential with a 2% error rate. Look for ways to cultivate this mentality in your team.
 * Reward creativity with small incentives even if the idea does not come to fruition or result in an improvement in metrics. Small gestures from a leader can make people feel rewarded for their risk (to quote Napoleon, “Men will fight long and hard for a bit of colored ribbon”).
+
 #### Owner
 Ownership can be difficult to convey effectively to our teams, because leaders are responsible for the results at the end of the day. However, there is a natural tendency to step in earlier than necessary or overly control projects to ensure their success. Sadly, the net result is that our teams learn that they do not actually control their fate and become less committed to owning their team’s success. Having your teams fail from time to time is better than never failing as growth happens at the edge of safety, not deep within it. People should try, fail, try, and succeed at a higher level than they are currently comfortable. You can create an atmosphere of ambitious ownership in a variety of ways:
 * Allow your team to define their own quarterly projects against a broader set of goals. What will they do, what will be the deliverables and timelines, how will they measure success? Challenge them during the project planning phase to be ambitious but realistic and then hold them accountable to their own commitments.
@@ -45,6 +57,7 @@ Ownership can be difficult to convey effectively to our teams, because leaders a
 * Use empowered language and push your team to do the same. Phrases like “Can I … / May I …” create a lower sensation of ownership than “I will … / I plan to …”.
 * Avoid providing solutions unless absolutely necessary, instead encourage your team to provide a proposal for a solution at the same time they bring you a problem. Focus the discussion on their solution and alternatives rather than trying to solve the problem for them.
 * Continuously explain your interpretation of situations and rationale for decisions you make, and encourage your team to do the same. This increases mutual trust via transparency and allows them to grow and learn from your experience.
+
 #### Lover
 There is substantial evidence that the attitude with which people approach problems has an enormous impact on their level of success. If you believe that you can be successful, there is a much higher chance that you will succeed at your goal. As a leader, you have an enormous influence on how motivated and energized your team is, and how positive they approach their work. You can materially change the performance of your team just by acting in a more positive, inspiring way. Some ideas and best practices to consider:
 * Greet every member of your team in the morning and use their name (but don’t do it in an awkward way). People’s brains fire endorphins (the feel good hormone released after sports) when they hear their own name.
@@ -52,6 +65,7 @@ There is substantial evidence that the attitude with which people approach probl
 * When new challenges arise, approach them with enthusiasm and share with your team why they should also be excited. Almost every problem opens a new opportunity for excellence and learning.
 * Celebrate the achievements of your team with specific, personal praise. “Good job Billy” is much less effective than “Billy, the text you wrote for offer X was fantastic because it really made me feel like I could envision sitting on that beach with a cocktail”.
 * Continuously look for opportunities to recognize your team for their achievements and make time to share it with them at that moment (or as close as possible). If you can’t find 2-3 things to praise for each person per week, you should spend more time observing your team.
+
 #### Genius
 Being a “genius” is not necessarily being the most book-smart, always having the answer, or being a technical wizard. Rather, a genius is someone who can effectively assess whether they have sufficient data to make a decision, gathers what they need if not, pragmatically acts on the information they have, and demands the same of their colleagues at all levels. To drive this atmosphere in your team, you should:
 * Always present your qualitative and quantitative analysis of a decision or action to your team, and encourage them to question you on it / play devil’s advocate.
@@ -69,6 +83,7 @@ Counter to popular opinion, the worst thing we can do to people is be too nice t
 * Continuously ask your team for their feedback and support on topics of their expertise. Even if you may “know more”, they may have alternate perspectives which strengthen the net outcome.
 * Share your own concerns and thoughts on broader topics with your team, along with the context for them. Formulate discussions on broader company topics and encourage them to question more senior management.
 * Always be looking at the status quo of process and actions and actively challenge if it is necessary. Don’t accept that things should be done just because they have been done that way in the past, and don’t allow your team to complacently accept either.
+
 #### Empath
 But while pushing our employees hard, they must always feel valued and important, that their work matters and that we appreciate their contribution. The single most important reason that people quit their jobs is their manager, and from that pool the majority left because they felt that their manager was not invested in them or did not care about them. Fostering a collaborative, caring environment is a critical skill of a leader and can unlock enormous potential in your team. So actions you can take to do so:
 * Collaborate with your employees on projects and encourage them to do the same. Continuously seek their feedback on your work and ask their advice. Encourage them to do the same.
@@ -77,6 +92,10 @@ But while pushing our employees hard, they must always feel valued and important
 * Continuously thank people for sharing their opinions and questions with you and with the team. The only dumb question is the one left unasked; the only dumb idea, the one not shared.
 * Celebrate! This does not have to be big, but continuously celebrate your successes. A bottle of prosecco or a bag of candy for a team who does something awesome is a small price to pay for making people feel rewarded.
 * Be cognizant of how you speak of others with your team. Do not feel that you have to hide your opinions, but avoid gossip or personal attacks. “I’m frustrated right now with team X because of …” is fine to share with your team (if you share how you’re working on a solution) but badmouthing a fellow employee should be avoided.
+
+
+
+
 ## Recommended Reading
 If you’d like to read more on these ideas, the following books are recommended to dive deeper into management theories and best practices:
 * [Turn The Ship Around](https://www.amazon.co.uk/gp/product/0241250943/)
@@ -84,5 +103,3 @@ If you’d like to read more on these ideas, the following books are recommended
 * [Principle Centered Leadership](https://www.amazon.co.uk/Principle-Centered-Leadership-Covey/dp/0671792806/)
 * [Coaching for Performance](https://www.amazon.co.uk/Coaching-Performance-Principles-Leadership-ANNIVERSARY/dp/1473658128/)
 * [The One Minute Manager](https://www.amazon.co.uk/Leaders-Eat-Last-Together-Others/dp/0670923176/)
-
-#leadership
