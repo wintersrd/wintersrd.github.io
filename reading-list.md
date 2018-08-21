@@ -3,7 +3,7 @@ title: Reading List
 subtitle: a list of books I read
 layout: "page"
 icon: fa-book
-order: 3
+order: 4
 ---
 
 I try to read regularly from a variety of genres, this is my list of "recent" reads:

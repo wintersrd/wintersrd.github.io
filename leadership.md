@@ -1,9 +1,9 @@
 ---
-title: Leadership
+title: Leadership Essay
 subtitle: My thoughts on team leadership
 layout: "page"
 icon: fa-book
-order: 4
+order: 5
 ---
 
 Below is a short set of guidelines and best practices I wrote for TravelBird on how to be an effective team leader based on our cultural values.
