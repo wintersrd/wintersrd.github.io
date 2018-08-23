@@ -23,7 +23,7 @@ for row in records:
                        'translated_comment': translate_client.translate(row[1])['translatedText']})
 ```
 
-While the translations are useful, we also want to enrich this with some information about customer sentiment in order to quickly spot unexpected deviations (for example, receiving a high satisfaction score but using negative language might indicate specific frustrations). For the sake of simplicity, we use the NLTK vader sentiment library:
+While the translations are useful, we also want to enrich this with some information about customer sentiment in order to quickly spot unexpected deviations (for example, receiving a high satisfaction score but using negative language might indicate specific frustrations). For the sake of simplicity, we use the NLTK VADER sentiment library:
 ```python
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
