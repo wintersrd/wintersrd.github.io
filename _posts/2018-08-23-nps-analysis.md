@@ -7,6 +7,7 @@ Like many companies, we regularly ask our customers for feedback in the form of 
 
 The starting point of this data pipe is to get all comments into English, which is already a huge time savings for our team:
 ```python
+import os
 from google.cloud import translate
 
 from bibrary.db import run_query
